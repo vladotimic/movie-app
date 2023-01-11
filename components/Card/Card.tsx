@@ -20,6 +20,7 @@ const Card = (props: Movie) => {
 
   return (
     <Box
+      as={motion.div}
       maxW="sm"
       color="white"
       bg="blue.900"
@@ -27,8 +28,12 @@ const Card = (props: Movie) => {
       position="relative"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      whileHover={{
+        scale: 1.1,
+        zIndex: 2,
+      }}
     >
-      <Box position="relative" w="285px" h="180px">
+      <Box position="relative" w="auto" h="230px">
         <Image
           src={`https://image.tmdb.org/t/p/original${backdrop_path}`}
           alt={original_title}
@@ -51,8 +56,6 @@ const Card = (props: Movie) => {
         color="white"
         opacity="0"
         p="0.5rem"
-        borderBottomRightRadius="lg"
-        borderBottomLeftRadius="lg"
       >
         <Text fontSize="xl">{original_title}</Text>
         <Text fontSize="md">{formatDate(release_date)}</Text>

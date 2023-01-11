@@ -1,10 +1,6 @@
-import { useEffect } from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
-import { Flex, Container } from '@chakra-ui/react';
 import { Movie } from '../types';
-import { Card } from '../components';
-import { client } from '../axios';
+import { MovieSection } from '../components';
 import { getPopularMovies, getMoviesByGenre } from '../services';
 
 interface Props {
@@ -22,18 +18,6 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ movies }: Props) {
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        // fetch most popular horror movies
-        // const data = await getMoviesByGenre(27);
-        // console.log(data);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    fetchData();
-  }, []);
   return (
     <>
       <Head>
@@ -46,20 +30,10 @@ export default function Home({ movies }: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Container maxW="1200px" my="2rem">
-          {movies && (
-            <Flex flexWrap="wrap" gap="2">
-              {movies.map((movie: Movie) => {
-                const { id } = movie;
-                return (
-                  <Link key={id} href={`/movie/${id}`}>
-                    <Card {...movie} />
-                  </Link>
-                );
-              })}
-            </Flex>
-          )}
-        </Container>
+        <MovieSection title="Horror" movies={movies} />
+        <MovieSection title="Action" movies={movies} />
+        <MovieSection title="Comedy" movies={movies} />
+        <MovieSection title="Thriller" movies={movies} />
       </main>
     </>
   );
