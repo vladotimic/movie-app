@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { Movie } from '../types';
 import { MovieSection } from '../components';
-import { getPopularMovies, getMoviesByGenre } from '../services';
+import { getPopularMovies } from '../services';
 
 interface Props {
   movies: Movie[];

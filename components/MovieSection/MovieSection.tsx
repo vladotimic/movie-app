@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import { Box, Text } from '@chakra-ui/react';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
+import { Navigation, Scrollbar, A11y, Mousewheel, Keyboard } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/scrollbar';
 import { Movie } from '../../types';
 import { Card } from '../';
 
@@ -13,7 +15,6 @@ interface Props {
 
 const MovieSection = (props: Props) => {
   const { title, movies } = props;
-  const swiper = useSwiper();
 
   return (
     <Box my="1rem">
@@ -22,21 +23,27 @@ const MovieSection = (props: Props) => {
       </Text>
       {movies && (
         <Swiper
-          // style={{ overflow: 'visible' }}
-          modules={[Navigation, Pagination, Scrollbar, A11y]}
-          slidesPerView={4}
+          modules={[Navigation, Scrollbar, A11y, Keyboard, Mousewheel]}
+          slidesPerView={5}
           navigation
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
-          onSlideChange={() => console.log('slide change')}
+          keyboard={{ enabled: true }}
+          mousewheel
           onSwiper={(swiper) => console.log(swiper)}
         >
-          {movies.map((movie: Movie) => {
+          {movies.map((movie: Movie, index: number) => {
             const { id } = movie;
+            const position =
+              index === 0
+                ? 'first'
+                : index === movies.length - 1
+                ? 'last'
+                : null;
             return (
               <SwiperSlide key={id}>
                 <Link href={`/movie/${id}`}>
-                  <Card {...movie} />
+                  <Card movie={movie} position={position} />
                 </Link>
               </SwiperSlide>
             );

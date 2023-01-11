@@ -1,0 +1,7 @@
+body {
+  overflow-x: hidden;
+}
+
+.swiper {
+  overflow: visible !important;
+}

@@ -5,8 +5,14 @@ import { motion } from 'framer-motion';
 import { Movie } from '../../types';
 import { formatDate } from '../../utils/date';
 
-const Card = (props: Movie) => {
-  const { original_title, backdrop_path, release_date } = props;
+interface Props {
+  movie: Movie;
+  position?: 'first' | 'last' | null;
+}
+
+const Card = (props: Props) => {
+  const { movie, position } = props;
+  const { original_title, backdrop_path, release_date } = movie;
   const [isHovered, setIsHovered] = useState(false);
 
   const variants = {
@@ -18,20 +24,28 @@ const Card = (props: Movie) => {
     },
   };
 
+  const hover =
+    position === 'first'
+      ? {
+          scale: 1.1,
+          zIndex: 2,
+          translateX: 20,
+        }
+      : position === 'last'
+      ? { scale: 1.1, zIndex: 2, translateX: -20 }
+      : { scale: 1.1, zIndex: 2 };
+
   return (
     <Box
       as={motion.div}
       maxW="sm"
       color="white"
       bg="blue.900"
-      borderRadius="lg"
       position="relative"
+      borderRadius="lg"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      whileHover={{
-        scale: 1.1,
-        zIndex: 2,
-      }}
+      whileHover={hover}
     >
       <Box position="relative" w="auto" h="230px">
         <Image
