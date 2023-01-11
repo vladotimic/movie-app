@@ -1,7 +1,8 @@
 import Link from 'next/link';
-import { Box, Text } from '@chakra-ui/react';
-import { Navigation, Scrollbar, A11y, Mousewheel, Keyboard } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Box, Text, Button } from '@chakra-ui/react';
+import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
+import { Scrollbar, A11y, Mousewheel, Keyboard } from 'swiper';
+import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/scrollbar';
@@ -13,6 +14,60 @@ interface Props {
   movies: Movie[];
 }
 
+const NextButton = () => {
+  const swiper = useSwiper();
+  return (
+    <Button
+      position="absolute"
+      top="-3"
+      right="0"
+      zIndex="2"
+      h="110%"
+      borderRadius="none"
+      bg="transparent"
+      bgGradient="linear(to-r, rgba(0,0,0,0), #000)"
+      _hover={{
+        bg: 'transparent',
+        bgGradient: 'linear(to-r, rgba(0,0,0,0), #000)',
+      }}
+      _active={{
+        bg: 'transparent',
+        bgGradient: 'linear(to-r, rgba(0,0,0,0), #000)',
+      }}
+      onClick={() => swiper.slideNext()}
+    >
+      <ChevronRightIcon boxSize="3rem" color="red" />
+    </Button>
+  );
+};
+
+const PrevButton = () => {
+  const swiper = useSwiper();
+  return (
+    <Button
+      position="absolute"
+      top="-3"
+      left="0"
+      zIndex="2"
+      h="110%"
+      borderRadius="none"
+      bg="transparent"
+      bgGradient="linear(to-l, rgba(0,0,0,0), #000)"
+      _hover={{
+        bg: 'transparent',
+        bgGradient: 'linear(to-l, rgba(0,0,0,0), #000)',
+      }}
+      _active={{
+        bg: 'transparent',
+        bgGradient: 'linear(to-l, rgba(0,0,0,0), #000)',
+      }}
+      onClick={() => swiper.slidePrev()}
+    >
+      <ChevronLeftIcon boxSize="3rem" color="red" />
+    </Button>
+  );
+};
+
 const MovieSection = (props: Props) => {
   const { title, movies } = props;
 
@@ -23,15 +78,16 @@ const MovieSection = (props: Props) => {
       </Text>
       {movies && (
         <Swiper
-          modules={[Navigation, Scrollbar, A11y, Keyboard, Mousewheel]}
+          modules={[Scrollbar, A11y, Keyboard, Mousewheel]}
           slidesPerView={5}
-          navigation
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
           keyboard={{ enabled: true }}
           mousewheel
           onSwiper={(swiper) => console.log(swiper)}
         >
+          <PrevButton />
+          <NextButton />
           {movies.map((movie: Movie, index: number) => {
             const { id } = movie;
             const position =
