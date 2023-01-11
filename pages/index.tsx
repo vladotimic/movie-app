@@ -5,7 +5,7 @@ import { Flex, Container } from '@chakra-ui/react';
 import { Movie } from '../types';
 import { Card } from '../components';
 import { client } from '../axios';
-import { getPopularMovies } from '../services';
+import { getPopularMovies, getMoviesByGenre } from '../services';
 
 interface Props {
   movies: Movie[];
@@ -26,10 +26,8 @@ export default function Home({ movies }: Props) {
     async function fetchData() {
       try {
         // fetch most popular horror movies
-        const data = await client.get(
-          `/discover/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US&sort_by=popularity.desc&include_video=ture&page=1&with_genres=27`
-        );
-        console.log({ data });
+        // const data = await getMoviesByGenre(27);
+        // console.log(data);
       } catch (error) {
         console.log(error);
       }
