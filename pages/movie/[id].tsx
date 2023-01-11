@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { api } from '../../api';
+import { client } from '../../axios';
 
 export default function MoviePage() {
   const router = useRouter();
@@ -9,7 +9,7 @@ export default function MoviePage() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const data = await api.get(
+        const data = await client.get(
           `/movie/${id}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
         );
         console.log(data);

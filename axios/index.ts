@@ -1,5 +1,5 @@
 import axios from 'axios';
 
-export const api = axios.create({
+export const client = axios.create({
   baseURL: 'https://api.themoviedb.org/3',
 });
