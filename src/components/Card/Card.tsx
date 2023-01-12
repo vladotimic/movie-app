@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Box, Text } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { Movie } from '../../types';
-import { formatDate } from '../../utils/date';
+import { formatDate } from '../../src/utils/date';
 
 interface Props {
   movie: Movie;

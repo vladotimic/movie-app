@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { client } from '../../axios';
+import { client } from '../../src/axios';
 
 export default function MoviePage() {
   const router = useRouter();

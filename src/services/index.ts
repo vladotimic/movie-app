@@ -1,6 +1,6 @@
 import { client } from '../axios';
 import { popular, horror, thriller, action, comedy } from '../data';
-import { Movie } from '../types';
+import { Movie } from '../../types';
 
 const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 const env = process.env.NEXT_PUBLIC_NODE_ENV;
