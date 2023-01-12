@@ -1,12 +1,6 @@
 import Link from 'next/link';
 import { Box, Text, Button } from '@chakra-ui/react';
-
-export interface Props {
-  id: number;
-  title: string;
-  overview: string;
-  imgUrl: string;
-}
+import { MovieBanner as Props } from '../../types';
 
 const Header = (props: Props) => {
   const { id, title, overview, imgUrl } = props;
