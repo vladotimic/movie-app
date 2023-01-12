@@ -10,7 +10,7 @@ import {
   getComedyMovies,
   getHorrorMovies,
   getThrillerMovies,
-} from '../src/services';
+} from '../services';
 
 interface Props {
   popular: HeaderProps[];
