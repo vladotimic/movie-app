@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { GetServerSideProps } from 'next';
-import { Movie } from '../types';
+import { Movie, MovieBanner } from '../types';
 import { MovieSection, Header } from '../components';
-import { Props as HeaderProps } from '../components/Header/Header';
 import {
   getPopularMovies,
   getActionMovies,
@@ -13,7 +12,7 @@ import {
 } from '../services';
 
 interface Props {
-  popular: HeaderProps[];
+  popular: MovieBanner[];
   horror: Movie[];
   action: Movie[];
   comedy: Movie[];
@@ -44,8 +43,12 @@ export default function Home(props: Props) {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setIndex(index + 1);
-    }, 10000);
+      let update = index + 1;
+      if (index === 19) {
+        update = 0;
+      }
+      setIndex(update);
+    }, 10_000);
 
     return () => {
       clearTimeout(timer);
