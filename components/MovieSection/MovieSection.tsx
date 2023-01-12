@@ -84,7 +84,6 @@ const MovieSection = (props: Props) => {
           scrollbar={{ draggable: true }}
           keyboard={{ enabled: true }}
           mousewheel
-          onSwiper={(swiper) => console.log(swiper)}
         >
           <PrevButton />
           <NextButton />
