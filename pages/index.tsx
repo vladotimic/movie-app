@@ -40,7 +40,6 @@ export async function getServerSideProps() {
 export default function Home(props: Props) {
   const [index, setIndex] = useState(0);
   const { popular, action, comedy, horror, thriller } = props;
-  const { title, overview, imgUrl } = popular[index];
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -63,7 +62,9 @@ export default function Home(props: Props) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header title={title} overview={overview} imgUrl={imgUrl} />
+
+      <Header {...popular[index]} />
+
       <main>
         <MovieSection title="Action" movies={action} />
         <MovieSection title="Comedy" movies={comedy} />

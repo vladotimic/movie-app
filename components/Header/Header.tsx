@@ -1,13 +1,15 @@
+import Link from 'next/link';
 import { Box, Text, Button } from '@chakra-ui/react';
 
 export interface Props {
+  id: number;
   title: string;
   overview: string;
   imgUrl: string;
 }
 
 const Header = (props: Props) => {
-  const { title, overview, imgUrl } = props;
+  const { id, title, overview, imgUrl } = props;
 
   return (
     <Box position="relative" w="100%" h="80vh">
@@ -17,9 +19,11 @@ const Header = (props: Props) => {
           <Text fontSize="xl" py="1rem">
             {overview}
           </Text>
-          <Button bg="red" mt="1rem" w="10rem" _hover={{ bg: 'red.700' }}>
-            Play
-          </Button>
+          <Link href={`/movie/${id}`} legacyBehavior>
+            <Button bg="red" mt="1rem" w="10rem" _hover={{ bg: 'red.700' }}>
+              Play
+            </Button>
+          </Link>
         </Box>
       </Box>
       <Box
