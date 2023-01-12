@@ -1,11 +1,10 @@
 import Link from 'next/link';
 import { Box, Text, Button } from '@chakra-ui/react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
-import { Scrollbar, A11y, Mousewheel, Keyboard } from 'swiper';
+import { A11y } from 'swiper';
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/scrollbar';
+import 'swiper/css/a11y';
 import { Movie } from '../../types';
 import { Card } from '../';
 
@@ -14,56 +13,43 @@ interface Props {
   movies: Movie[];
 }
 
-const NextButton = () => {
-  const swiper = useSwiper();
-  return (
-    <Button
-      position="absolute"
-      top="-3"
-      right="0"
-      zIndex="2"
-      h="110%"
-      borderRadius="none"
-      bg="transparent"
-      bgGradient="linear(to-r, rgba(0,0,0,0), #000)"
-      _hover={{
-        bg: 'transparent',
-        bgGradient: 'linear(to-r, rgba(0,0,0,0), #000)',
-      }}
-      _active={{
-        bg: 'transparent',
-        bgGradient: 'linear(to-r, rgba(0,0,0,0), #000)',
-      }}
-      onClick={() => swiper.slideNext()}
-    >
-      <ChevronRightIcon boxSize="3rem" color="red" />
-    </Button>
-  );
-};
+interface ButtonProps {
+  type: 'next' | 'prev';
+}
 
-const PrevButton = () => {
+const SlideButton = ({ type }: ButtonProps) => {
   const swiper = useSwiper();
+  const btnPosition = type === 'next' ? { right: '0' } : { left: '0' };
+  const gradient = type === 'next' ? 'to-r' : 'to-l';
+  const handleSlide = () => {
+    return type === 'next' ? swiper.slideNext() : swiper.slidePrev();
+  };
+
   return (
     <Button
       position="absolute"
       top="-3"
-      left="0"
       zIndex="2"
       h="110%"
       borderRadius="none"
       bg="transparent"
-      bgGradient="linear(to-l, rgba(0,0,0,0), #000)"
+      bgGradient={`linear(${gradient}, rgba(0,0,0,0), #000)`}
+      sx={btnPosition}
       _hover={{
         bg: 'transparent',
-        bgGradient: 'linear(to-l, rgba(0,0,0,0), #000)',
+        bgGradient: `linear(${gradient}, rgba(0,0,0,0), #000)`,
       }}
       _active={{
         bg: 'transparent',
-        bgGradient: 'linear(to-l, rgba(0,0,0,0), #000)',
+        bgGradient: `linear(${gradient}, rgba(0,0,0,0), #000)`,
       }}
-      onClick={() => swiper.slidePrev()}
+      onClick={handleSlide}
     >
-      <ChevronLeftIcon boxSize="3rem" color="red" />
+      {type === 'next' ? (
+        <ChevronRightIcon boxSize="3rem" color="red" />
+      ) : (
+        <ChevronLeftIcon boxSize="3rem" color="red" />
+      )}
     </Button>
   );
 };
@@ -77,16 +63,9 @@ const MovieSection = (props: Props) => {
         {title}
       </Text>
       {movies && (
-        <Swiper
-          modules={[Scrollbar, A11y, Keyboard, Mousewheel]}
-          slidesPerView={5}
-          pagination={{ clickable: true }}
-          scrollbar={{ draggable: true }}
-          keyboard={{ enabled: true }}
-          mousewheel
-        >
-          <PrevButton />
-          <NextButton />
+        <Swiper modules={[A11y]} slidesPerView={5}>
+          <SlideButton type="next" />
+          <SlideButton type="prev" />
           {movies.map((movie: Movie, index: number) => {
             const { id } = movie;
             const position =
