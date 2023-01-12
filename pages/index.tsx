@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
+import { GetServerSideProps } from 'next';
 import { Movie } from '../types';
 import { MovieSection, Header } from '../components';
 import { Props as HeaderProps } from '../components/Header/Header';
@@ -19,7 +20,7 @@ interface Props {
   thriller: Movie[];
 }
 
-export async function getServerSideProps() {
+export const getServerSideProps: GetServerSideProps = async () => {
   const popular = await getPopularMovies();
   const horror = await getHorrorMovies();
   const action = await getActionMovies();
@@ -35,7 +36,7 @@ export async function getServerSideProps() {
       thriller,
     },
   };
-}
+};
 
 export default function Home(props: Props) {
   const [index, setIndex] = useState(0);
