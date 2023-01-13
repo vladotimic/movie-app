@@ -2,17 +2,17 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { Box, Text } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
-import { Movie } from '../../types';
+import { MovieBase } from '../../types';
 import { formatDate } from '../../utils/date';
 
 interface Props {
-  movie: Movie;
+  movie: MovieBase;
   position?: 'first' | 'last' | null;
 }
 
 const Card = (props: Props) => {
   const { movie, position } = props;
-  const { original_title, backdrop_path, release_date } = movie;
+  const { title, backdrop_path, release_date } = movie;
   const [isHovered, setIsHovered] = useState(false);
 
   const variants = {
@@ -50,7 +50,7 @@ const Card = (props: Props) => {
       <Box position="relative" w="auto" h="230px">
         <Image
           src={`https://image.tmdb.org/t/p/original${backdrop_path}`}
-          alt={original_title}
+          alt={title}
           fill
           sizes="(max-width: 768px) 100vw,
               (max-width: 1200px) 50vw,
@@ -71,7 +71,7 @@ const Card = (props: Props) => {
         opacity="0"
         p="0.5rem"
       >
-        <Text fontSize="xl">{original_title}</Text>
+        <Text fontSize="xl">{title}</Text>
         <Text fontSize="md">{formatDate(release_date)}</Text>
       </Box>
     </Box>

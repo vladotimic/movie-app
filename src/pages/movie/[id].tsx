@@ -5,7 +5,7 @@ import { GetStaticProps, GetStaticPaths } from 'next';
 import { Text } from '@chakra-ui/react';
 import { client } from '../../axios';
 import { getPopularMovies, getMovieById } from '../../services';
-import { MovieBanner, MovieDetails as Props } from '../../types';
+import { MovieBanner, MovieDetails } from '../../types';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const data = await getPopularMovies();
@@ -22,8 +22,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const id = Number(params?.id);
+export const getStaticProps: GetStaticProps = async (context) => {
+  const id = context?.params?.id;
 
   const movie = id ? await getMovieById(id) : null;
 
@@ -34,7 +34,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
-export default function MoviePage(props: Props) {
+export default function MoviePage(props: MovieDetails) {
   const [movie, setMovie] = useState(props);
   const router = useRouter();
   const movieId = router.query.id;

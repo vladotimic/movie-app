@@ -5,12 +5,12 @@ import { A11y } from 'swiper';
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/a11y';
-import { Movie } from '../../types';
+import { MovieBase } from '../../types';
 import { Card } from '../';
 
 interface Props {
   title: string;
-  movies: Movie[];
+  movies: MovieBase[];
 }
 
 interface ButtonProps {
@@ -66,7 +66,7 @@ const MovieSection = (props: Props) => {
         <Swiper modules={[A11y]} slidesPerView={5}>
           <SlideButton type="next" />
           <SlideButton type="prev" />
-          {movies.map((movie: Movie, index: number) => {
+          {movies.map((movie: MovieBase, index: number) => {
             const { id } = movie;
             const position =
               index === 0
