@@ -1,37 +1,31 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { GetServerSideProps } from 'next';
-import { Movie, MovieBanner } from '../types';
+import { MovieBase, MovieBanner } from '../types';
 import { MovieSection, Header } from '../components';
-import {
-  getPopularMovies,
-  getActionMovies,
-  getComedyMovies,
-  getHorrorMovies,
-  getThrillerMovies,
-} from '../services';
+import { getPopularMovies, getMoviesByGenre } from '../services';
 
 interface Props {
   popular: MovieBanner[];
-  horror: Movie[];
-  action: Movie[];
-  comedy: Movie[];
-  thriller: Movie[];
+  horror: MovieBase[];
+  action: MovieBase[];
+  comedy: MovieBase[];
+  thriller: MovieBase[];
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const popular = await getPopularMovies();
-  const horror = await getHorrorMovies();
-  const action = await getActionMovies();
-  const comedy = await getComedyMovies();
-  const thriller = await getThrillerMovies();
+  const action = await getMoviesByGenre('action');
+  const comedy = await getMoviesByGenre('comedy');
+  const horror = await getMoviesByGenre('horror');
+  const thriller = await getMoviesByGenre('thriller');
 
   return {
     props: {
       popular,
-      horror,
       action,
       comedy,
+      horror,
       thriller,
     },
   };
