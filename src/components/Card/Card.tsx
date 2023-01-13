@@ -47,15 +47,32 @@ const Card = (props: Props) => {
       onMouseLeave={() => setIsHovered(false)}
       whileHover={hover}
     >
-      <Box position="relative" w="auto" h="230px">
-        <Image
-          src={`https://image.tmdb.org/t/p/original${backdrop_path}`}
-          alt={title}
-          fill
-          sizes="(max-width: 768px) 100vw,
-              (max-width: 1200px) 50vw,
-              33vw"
-        />
+      <Box
+        position="relative"
+        w="auto"
+        h="230px"
+        bg="gray.300"
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+      >
+        {!backdrop_path ? (
+          <Image
+            src="/broken-img.svg"
+            width={50}
+            height={50}
+            alt="Broken path"
+          />
+        ) : (
+          <Image
+            src={`https://image.tmdb.org/t/p/original${backdrop_path}`}
+            alt={title}
+            fill
+            sizes="(max-width: 768px) 100vw,
+        (max-width: 1200px) 50vw,
+        33vw"
+          />
+        )}
       </Box>
       <Box
         as={motion.div}
