@@ -1,5 +1,19 @@
 import { Genres } from '../types';
-import { horror, thriller, action, comedy } from '../data';
+import {
+  horror,
+  thriller,
+  action,
+  comedy,
+  adventure,
+  animation,
+  crime,
+  drama,
+  fantasy,
+  romance,
+  scifi,
+  war,
+  mystery,
+} from '../data';
 
 export const genres: Genres = {
   action: 28,
@@ -20,15 +34,15 @@ export const genres: Genres = {
 export const fallback = {
   action,
   comedy,
-  adventure: action,
-  animation: action,
-  crime: action,
-  drama: action,
-  fantasy: action,
+  adventure,
+  animation,
+  crime,
+  drama,
+  fantasy,
   horror,
-  mystery: horror,
-  romance: action,
-  scifi: action,
+  mystery,
+  romance,
+  scifi,
   thriller,
-  war: action,
+  war,
 };
