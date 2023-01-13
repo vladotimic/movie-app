@@ -1,72 +1,42 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { GetStaticProps, GetStaticPaths } from 'next';
-import { Text } from '@chakra-ui/react';
 import { client } from '../../axios';
-import { getPopularMovies, getMovieById } from '../../services';
-import { MovieBanner, MovieDetails } from '../../types';
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const data = await getPopularMovies();
-  const paths = data.map((item: MovieBanner) => {
-    const id = item.id.toString();
-    return {
-      params: { id },
-    };
-  });
-
-  return {
-    paths,
-    fallback: true,
-  };
-};
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const id = params?.id;
-
-  const movie = id ? await getMovieById(id) : null;
-
-  return {
-    props: {
-      ...movie,
-    },
-  };
-};
+import { MovieDetails } from '../../types';
+import { Banner } from '../../components';
 
 export default function MoviePage(props: MovieDetails) {
   const [movie, setMovie] = useState(props);
   const router = useRouter();
   const movieId = router.query.id;
+  console.log({ movie });
 
-  const { title, overview } = movie;
+  const { id, title, backdrop_path } = movie;
+
+  const fetchMovie = async (id: number | string | string[]) => {
+    try {
+      const { data } = await client.get(
+        `/movie/${id}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
+      );
+      console.log(data);
+      setMovie(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const { data } = await client.get(
-          `/movie/${movieId}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
-        );
-        console.log(data);
-        setMovie(data);
-      } catch (error) {
-        console.log(error);
-      }
+    if (router.isReady && movieId && !id) {
+      fetchMovie(movieId);
     }
-    if (!props.imdb_id) {
-      fetchData();
-    }
-  }, []);
+  }, [router]);
 
   return (
-    <div>
+    <>
       <Head>
         <title>{title}</title>
       </Head>
-      <Text fontSize="5xl" fontWeight="700">
-        {title}
-      </Text>
-      <Text fontSize="lg">{overview}</Text>
-    </div>
+      <Banner imgUrl={backdrop_path} />
+    </>
   );
 }

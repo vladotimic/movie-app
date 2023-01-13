@@ -30,15 +30,19 @@ export const getPopularMovies = async () => {
   }
 };
 
-export const getMovieById = async (id: number | string | string[]) => {
-  try {
-    const { data } = await client.get(
-      `movie/${id}?api_key=${apiKey}&language=en-US`
-    );
-    return data;
-  } catch (error) {
-    console.log('There is something wrong with movie API!');
-    console.error(error);
+export const getMovieById = async (
+  id: number | string | string[] | undefined
+) => {
+  if (id) {
+    try {
+      const { data } = await client.get(
+        `/movie/${id}?api_key=${apiKey}&language=en-US`
+      );
+      return data;
+    } catch (error) {
+      console.log('There is something wrong with movie API!');
+      console.error(error);
+    }
   }
 };
 
