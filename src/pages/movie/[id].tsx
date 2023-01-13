@@ -22,8 +22,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const id = context?.params?.id;
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const id = params?.id;
 
   const movie = id ? await getMovieById(id) : null;
 
