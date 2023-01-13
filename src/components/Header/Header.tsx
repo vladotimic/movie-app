@@ -3,7 +3,7 @@ import { Box, Text, Button } from '@chakra-ui/react';
 import { MovieBanner as Props } from '../../types';
 
 const Header = (props: Props) => {
-  const { id, title, overview, imgUrl } = props;
+  const { id, title, overview, backdrop_path } = props;
 
   return (
     <Box position="relative" w="100%" h="80vh">
@@ -25,7 +25,7 @@ const Header = (props: Props) => {
         w="100%"
         h="100%"
         bottom="0"
-        backgroundImage={imgUrl}
+        backgroundImage={`https://image.tmdb.org/t/p/original${backdrop_path}`}
         backgroundSize="cover"
         backgroundRepeat="no-repeat"
         backgroundPosition="50% 50%"

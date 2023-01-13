@@ -21,7 +21,7 @@ export const getPopularMovies = async () => {
         id,
         title,
         overview,
-        imgUrl: `https://image.tmdb.org/t/p/original${backdrop_path}`,
+        backdrop_path,
       };
     });
   } catch (error) {
