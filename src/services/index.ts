@@ -1,6 +1,6 @@
 import { client } from '../axios';
 import { popular } from '../data';
-import { MovieBanner, Genre } from '../types';
+import { MovieBase, MovieBanner, Genre } from '../types';
 import { genres, fallback } from '../constants/genres';
 
 const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
@@ -54,7 +54,15 @@ export const getMoviesByGenre = async (genre: Genre) => {
     const { data } = await client.get(
       `/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_video=ture&page=1&with_genres=${genres[genre]}`
     );
-    return data?.results;
+    return data?.results.map((movie: MovieBase) => {
+      const { id, title, backdrop_path, release_date } = movie;
+      return {
+        id,
+        title,
+        release_date,
+        backdrop_path,
+      };
+    });
   } catch (error) {
     console.log('There is something wrong with genre movie API!');
     console.error(error);
