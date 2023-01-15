@@ -9,7 +9,11 @@ const Banner = (props: Props) => {
   const { children, imgUrl } = props;
 
   return (
-    <Box position="relative" w="100%" h="80vh">
+    <Box
+      position="relative"
+      w="100%"
+      h="80vh"
+    >
       {children}
       <Box
         position="absolute"

@@ -99,26 +99,71 @@ export default function Home(props: Props) {
           name="description"
           content="See the most popular movies at the moment!"
         />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1"
+        />
+        <link
+          rel="icon"
+          href="/favicon.ico"
+        />
       </Head>
 
       <Header {...popular[index]} />
 
       <main>
-        <MovieSection title="Action" movies={action} />
-        <MovieSection title="Comedy" movies={comedy} />
-        <MovieSection title="Horror" movies={horror} />
-        <MovieSection title="Thriller" movies={thriller} />
-        <MovieSection title="Adventure" movies={adventure} />
-        <MovieSection title="Animation" movies={animation} />
-        <MovieSection title="Crime" movies={crime} />
-        <MovieSection title="Drama" movies={drama} />
-        <MovieSection title="Mystery" movies={mystery} />
-        <MovieSection title="Fantasy" movies={fantasy} />
-        <MovieSection title="Science Fiction" movies={scifi} />
-        <MovieSection title="War" movies={war} />
-        <MovieSection title="Romance" movies={romance} />
+        <MovieSection
+          title="Action"
+          movies={action}
+        />
+        <MovieSection
+          title="Comedy"
+          movies={comedy}
+        />
+        <MovieSection
+          title="Horror"
+          movies={horror}
+        />
+        <MovieSection
+          title="Thriller"
+          movies={thriller}
+        />
+        <MovieSection
+          title="Adventure"
+          movies={adventure}
+        />
+        <MovieSection
+          title="Animation"
+          movies={animation}
+        />
+        <MovieSection
+          title="Crime"
+          movies={crime}
+        />
+        <MovieSection
+          title="Drama"
+          movies={drama}
+        />
+        <MovieSection
+          title="Mystery"
+          movies={mystery}
+        />
+        <MovieSection
+          title="Fantasy"
+          movies={fantasy}
+        />
+        <MovieSection
+          title="Science Fiction"
+          movies={scifi}
+        />
+        <MovieSection
+          title="War"
+          movies={war}
+        />
+        <MovieSection
+          title="Romance"
+          movies={romance}
+        />
       </main>
     </>
   );

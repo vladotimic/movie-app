@@ -46,9 +46,15 @@ const SlideButton = ({ type }: ButtonProps) => {
       onClick={handleSlide}
     >
       {type === 'next' ? (
-        <ChevronRightIcon boxSize="3rem" color="red" />
+        <ChevronRightIcon
+          boxSize="3rem"
+          color="red"
+        />
       ) : (
-        <ChevronLeftIcon boxSize="3rem" color="red" />
+        <ChevronLeftIcon
+          boxSize="3rem"
+          color="red"
+        />
       )}
     </Button>
   );
@@ -59,11 +65,18 @@ const MovieSection = (props: Props) => {
 
   return (
     <Box my="1rem">
-      <Text fontSize="4xl" fontWeight="900" mb="0.5rem">
+      <Text
+        fontSize="4xl"
+        fontWeight="900"
+        mb="0.5rem"
+      >
         {title}
       </Text>
       {movies && (
-        <Swiper modules={[A11y]} slidesPerView={5}>
+        <Swiper
+          modules={[A11y]}
+          slidesPerView={5}
+        >
           <SlideButton type="next" />
           <SlideButton type="prev" />
           {movies.map((movie: MovieBase, index: number) => {
@@ -77,7 +90,10 @@ const MovieSection = (props: Props) => {
             return (
               <SwiperSlide key={id}>
                 <Link href={`/movie/${id}`}>
-                  <Card movie={movie} position={position} />
+                  <Card
+                    movie={movie}
+                    position={position}
+                  />
                 </Link>
               </SwiperSlide>
             );
