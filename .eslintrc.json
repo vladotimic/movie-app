@@ -5,6 +5,7 @@
   },
   "extends": [
     "plugin:react/recommended",
+    "next/core-web-vitals",
     "standard-with-typescript",
     "plugin:prettier/recommended"
   ],
@@ -13,6 +14,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
+  "parser": "@typescript-eslint/parser",
   "plugins": ["react", "prettier"],
   "rules": {}
 }
