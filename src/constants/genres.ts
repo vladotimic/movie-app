@@ -1,4 +1,4 @@
-import { Genres } from '../types';
+import { Genres } from '../types/movie';
 import {
   horror,
   thriller,

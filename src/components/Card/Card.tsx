@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { Box, Text } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
-import { MovieBase } from '../../types';
+import { MovieBase } from '../../types/movie';
 import { formatDate } from '../../utils/date';
 
 interface Props {
