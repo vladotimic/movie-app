@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
-import { Text, Container, Flex, Box, Tag } from '@chakra-ui/react';
+import { Text, Container, Flex, Box, Tag, Button } from '@chakra-ui/react';
+import { FaPlay } from 'react-icons/fa';
 import { MovieBanner, MovieDetails } from '../../types/movie';
 import { api } from '../../api';
 import {
@@ -174,7 +175,7 @@ export default function MoviePage(props: MovieDetails) {
             </Text>
             <Text
               mt="1rem"
-              fontSize="xl"
+              fontSize="lg"
               fontWeight="700"
             >
               Overview
@@ -182,7 +183,7 @@ export default function MoviePage(props: MovieDetails) {
             <Text mt="0.5rem">{overview}</Text>
             {director && (
               <Text
-                fontSize="xl"
+                fontSize="lg"
                 fontWeight="700"
                 mt="1rem"
               >
@@ -197,7 +198,7 @@ export default function MoviePage(props: MovieDetails) {
             )}
             <Text
               mt="0.5rem"
-              fontSize="xl"
+              fontSize="lg"
               fontWeight="700"
             >
               Release Date:{' '}
@@ -208,6 +209,13 @@ export default function MoviePage(props: MovieDetails) {
                 {formatDate(release_date)}
               </Text>
             </Text>
+
+            <Button
+              mt="1rem"
+              leftIcon={<FaPlay />}
+            >
+              Play trailer
+            </Button>
           </Box>
         </Flex>
       </Banner>

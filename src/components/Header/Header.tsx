@@ -33,14 +33,7 @@ const Header = (props: Props) => {
             href={`/movie/${id}`}
             legacyBehavior
           >
-            <Button
-              bg="red"
-              mt="1rem"
-              w="10rem"
-              _hover={{ bg: 'red.700' }}
-            >
-              Play
-            </Button>
+            <Button mt="1rem">Play</Button>
           </Link>
         </Box>
       </Box>
