@@ -1,10 +1,14 @@
+import { getDirector } from './../utils/movie';
 import { api } from '../api';
 import { popular, singleMovie } from '../data';
-import { MovieBase, MovieBanner, Genre, MovieCredits } from '../types/movie';
+import { MovieBase, MovieBanner, Genre } from '../types/movie';
 import { genres, fallback } from '../constants/genres';
+import { filterCredits } from '@/utils/movie';
 
 const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 const env = process.env.NEXT_PUBLIC_NODE_ENV;
+
+type Id = number | string | string[] | undefined;
 
 export const getPopularMovies = async () => {
   try {
@@ -30,9 +34,7 @@ export const getPopularMovies = async () => {
   }
 };
 
-export const getMovieById = async (
-  id: number | string | string[] | undefined
-) => {
+export const getMovieById = async (id: Id) => {
   if (id) {
     try {
       if (env === 'development') {
@@ -72,9 +74,7 @@ export const getMoviesByGenre = async (genre: Genre) => {
   }
 };
 
-export const getWatchProvider = async (
-  id: number | string | string[] | undefined
-) => {
+export const getWatchProvider = async (id: Id) => {
   try {
     const data = await api.get(
       `/movie/${id}/watch/providers?api_key=${apiKey}`
@@ -86,23 +86,36 @@ export const getWatchProvider = async (
   }
 };
 
-export const getMovieCredits = async (
-  id: number | string | string[] | undefined
-) => {
+export const getMovieCredits = async (id: Id) => {
   try {
-    const { data } = await api.get(`/movie/${id}/credits?api_key=${apiKey}`);
+    const {
+      data: { cast, crew },
+    } = await api.get(`/movie/${id}/credits?api_key=${apiKey}`);
     return {
-      cast: data?.cast?.map((cast: MovieCredits) => {
-        const { id, name, profile_path, known_for_department } = cast;
-        return { id, name, profile_path, known_for_department };
-      }),
-      crew: data?.crew?.map((crew: MovieCredits) => {
-        const { id, known_for_department, name, profile_path } = crew;
-        return { id, known_for_department, name, profile_path };
-      }),
+      cast: filterCredits(cast),
+      crew: filterCredits(crew),
+      director: getDirector(crew),
     };
   } catch (error) {
     console.log('There is something wrong with credits API!');
+    console.error(error);
+  }
+};
+
+export const getMovieDetails = async (id: Id) => {
+  try {
+    if (env === 'development') {
+      return singleMovie;
+    }
+    const movieById = await getMovieById(id);
+    const credits = await getMovieCredits(id);
+
+    return {
+      ...movieById,
+      ...credits,
+    };
+  } catch (error) {
+    console.log('There is something wrong with movie API!');
     console.error(error);
   }
 };

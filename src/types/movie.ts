@@ -1,28 +1,38 @@
-export interface MovieBase {
+export interface Base {
   id: number;
+}
+
+export interface MovieBase extends Base {
   title: string;
   release_date: string;
   backdrop_path: string;
 }
 
-export interface MovieBanner extends MovieBase {
+export interface MovieBanner extends Base, MovieBase {
   overview: string;
 }
 
-export interface MovieDetails extends MovieBase, MovieBanner {
+export interface MovieGenre extends Base {
+  name: string;
+}
+
+export interface MovieDetails extends Base, MovieBase, MovieBanner {
   imdb_id: string;
   original_title: string;
   tagline: string;
+  budget: number;
   revenue: number;
   runtime: number;
   status: string;
   poster_path: string;
-  genres: [{ id: number; name: string }];
+  genres: MovieGenre[];
+  homepage: string;
+  cast: MovieCredits[];
+  crew: MovieCredits[];
+  director: string;
 }
 
-export interface MovieCredits {
-  id: number;
-  name: string;
+export interface MovieCredits extends Base, MovieGenre {
   profile_path: string;
   known_for_department: string;
 }

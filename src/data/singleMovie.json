@@ -1,46 +1,58 @@
 {
   "adult": false,
-  "backdrop_path": "/s16H6tpK2utvwDtzZ8Qy4qm5Emw.jpg",
+  "backdrop_path": "/r9PkFnRUIthgBp2JZZzD380MWZy.jpg",
   "belongs_to_collection": {
-    "id": 87096,
-    "name": "Avatar Collection",
-    "poster_path": "/uO2yU3QiGHvVp0L5e5IatTVRkYk.jpg",
-    "backdrop_path": "/iaEsDbQPE45hQU2EGiNjXD2KWuF.jpg"
+    "id": 94602,
+    "name": "Puss in Boots Collection",
+    "poster_path": "/anHwj9IupRoRZZ98WTBvHpTiE6A.jpg",
+    "backdrop_path": "/feU1DWV5zMWxXUHJyAIk3dHRQ9c.jpg"
   },
-  "budget": 460000000,
+  "budget": 90000000,
   "genres": [
     {
-      "id": 878,
-      "name": "Science Fiction"
+      "id": 16,
+      "name": "Animation"
+    },
+    {
+      "id": 28,
+      "name": "Action"
     },
     {
       "id": 12,
       "name": "Adventure"
     },
     {
-      "id": 28,
-      "name": "Action"
+      "id": 35,
+      "name": "Comedy"
+    },
+    {
+      "id": 10751,
+      "name": "Family"
+    },
+    {
+      "id": 14,
+      "name": "Fantasy"
     }
   ],
-  "homepage": "https://www.avatar.com/movies/avatar-the-way-of-water",
-  "id": 76600,
-  "imdb_id": "tt1630029",
+  "homepage": "https://www.dreamworks.com/movies/puss-in-boots-the-last-wish",
+  "id": 315162,
+  "imdb_id": "tt3915174",
   "original_language": "en",
-  "original_title": "Avatar: The Way of Water",
-  "overview": "Set more than a decade after the events of the first film, learn the story of the Sully family (Jake, Neytiri, and their kids), the trouble that follows them, the lengths they go to keep each other safe, the battles they fight to stay alive, and the tragedies they endure.",
-  "popularity": 3180.863,
-  "poster_path": "/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg",
+  "original_title": "Puss in Boots: The Last Wish",
+  "overview": "Puss in Boots discovers that his passion for adventure has taken its toll: He has burned through eight of his nine lives, leaving him with only one life left. Puss sets out on an epic journey to find the mythical Last Wish and restore his nine lives.",
+  "popularity": 12066.07,
+  "poster_path": "/1NqwE6LP9IEdOZ57NCT51ftHtWT.jpg",
   "production_companies": [
     {
-      "id": 574,
-      "logo_path": "/iB6GjNVHs5hOqcEYt2rcjBqIjki.png",
-      "name": "Lightstorm Entertainment",
+      "id": 33,
+      "logo_path": "/8lvHyhjr8oUKOOy2dKXoALWKdp0.png",
+      "name": "Universal Pictures",
       "origin_country": "US"
     },
     {
-      "id": 127928,
-      "logo_path": "/cxMxGzAgMMBhTXkcpYYCxWCOY90.png",
-      "name": "20th Century Studios",
+      "id": 521,
+      "logo_path": "/kP7t6RwGz2AvvTkvnI1uteEwHet.png",
+      "name": "DreamWorks Animation",
       "origin_country": "US"
     }
   ],
@@ -50,20 +62,1008 @@
       "name": "United States of America"
     }
   ],
-  "release_date": "2022-12-16",
-  "revenue": 1752000000,
-  "runtime": 192,
+  "release_date": "2022-12-07",
+  "revenue": 251348975,
+  "runtime": 103,
   "spoken_languages": [
     {
       "english_name": "English",
       "iso_639_1": "en",
       "name": "English"
+    },
+    {
+      "english_name": "Spanish",
+      "iso_639_1": "es",
+      "name": "Español"
     }
   ],
   "status": "Released",
-  "tagline": "Return to Pandora.",
-  "title": "Avatar: The Way of Water",
+  "tagline": "Say hola to his little friends.",
+  "title": "Puss in Boots: The Last Wish",
   "video": false,
-  "vote_average": 7.717,
-  "vote_count": 4042
+  "vote_average": 8.6,
+  "vote_count": 1738,
+  "cast": [
+    {
+      "id": 3131,
+      "name": "Antonio Banderas",
+      "profile_path": "/iWIUEwgn2KW50MssR7tdPeFoRGW.jpg",
+      "known_for_department": "Acting"
+    },
+    {
+      "id": 3136,
+      "name": "Salma Hayek",
+      "profile_path": "/ka1luhF3DrSMEeY4dd5bKZOsPPS.jpg",
+      "known_for_department": "Acting"
+    },
+    {
+      "id": 210172,
+      "name": "Harvey Guillén",
+      "profile_path": "/yiNBonobPwqMVweB02JWufzp2l9.jpg",
+      "known_for_department": "Acting"
+    },
+    {
+      "id": 52583,
+      "name": "Wagner Moura",
+      "profile_path": "/6gcfwvOueJKhDpTP9KLGuWz0Hk4.jpg",
+      "known_for_department": "Acting"
+    },
+    {
+      "id": 1373737,
+      "name": "Florence Pugh",
+      "profile_path": "/421cSReX2Fktldac8SyY2k0yLwY.jpg",
+      "known_for_department": "Acting"
+    },
+    {
+      "id": 39187,
+      "name": "Olivia Colman",
+      "profile_path": "/1KTXGJaqWRnsoA6qeaUa7U2zkHL.jpg",
+      "known_for_department": "Acting"
+    },
+    {
+      "id": 5538,
+      "name": "Ray Winstone",
+      "profile_path": "/eSRgAC98u5hQroeZzDeRf60XE21.jpg",
+      "known_for_department": "Acting"
+    },
+    {
+      "id": 1346535,
+      "name": "Samson Kayo",
+      "profile_path": "/jyGT8cgl6MEANOpRKoHgXaC1yp6.jpg",
+      "known_for_department": "Acting"
+    },
+    {
+      "id": 933558,
+      "name": "John Mulaney",
+      "profile_path": "/3SDor3OCKeRvNvFJnbmUY7fg8PD.jpg",
+      "known_for_department": "Acting"
+    },
+    {
+      "id": 1180099,
+      "name": "Da'Vine Joy Randolph",
+      "profile_path": "/awNT6lltD8zItbGtolmO8IGT8ot.jpg",
+      "known_for_department": "Acting"
+    },
+    {
+      "id": 1371039,
+      "name": "Anthony Mendez",
+      "profile_path": "/p6aJA6De9KWR8vlw1nK0VnVJtFy.jpg",
+      "known_for_department": "Acting"
+    },
+    {
+      "id": 3815284,
+      "name": "Kevin McCann",
+      "profile_path": "/drHTnxuAL5xRDIcWqDyvRbqAMck.jpg",
+      "known_for_department": "Acting"
+    },
+    {
+      "id": 1346997,
+      "name": "Bernardo de Paula",
+      "profile_path": "/sjvTZ6sfF3xeRsbAaPdV4Qeh2bO.jpg",
+      "known_for_department": "Acting"
+    },
+    {
+      "id": 1404102,
+      "name": "Betsy Sodaro",
+      "profile_path": "/9bMACXZdz4QHMc9Ew4WYIYVL5VH.jpg",
+      "known_for_department": "Acting"
+    },
+    {
+      "id": 1214638,
+      "name": "Artemis Pebdani",
+      "profile_path": "/ctwVQYbcOuTIQJ866fi3AhzqKBM.jpg",
+      "known_for_department": "Acting"
+    },
+    {
+      "id": 12080,
+      "name": "Conrad Vernon",
+      "profile_path": "/c7MIz3sy6UPhBh9YnThd7j8ypdl.jpg",
+      "known_for_department": "Acting"
+    },
+    {
+      "id": 12095,
+      "name": "Cody Cameron",
+      "profile_path": "/68Cewzd8H9qFwJclWFl33Fl3N70.jpg",
+      "known_for_department": "Acting"
+    },
+    {
+      "id": 3042923,
+      "name": "Kailey Crawford",
+      "profile_path": null,
+      "known_for_department": "Acting"
+    },
+    {
+      "id": 1214171,
+      "name": "Al Rodrigo",
+      "profile_path": "/kyQSlxHVnla3MfXzs2XhKCRHWMw.jpg",
+      "known_for_department": "Acting"
+    },
+    {
+      "id": 936670,
+      "name": "Bob Persichetti",
+      "profile_path": "/e8ezXe2id6TRTxDsL9lTpw4pM93.jpg",
+      "known_for_department": "Directing"
+    },
+    {
+      "id": 3464660,
+      "name": "Miguel Matrai",
+      "profile_path": null,
+      "known_for_department": "Acting"
+    },
+    {
+      "id": 1857635,
+      "name": "Pilar Uribe",
+      "profile_path": "/dU5ENAPoSDCFIUf1WPyu01ov5RE.jpg",
+      "known_for_department": "Acting"
+    },
+    {
+      "id": 1759221,
+      "name": "Heidi Gardner",
+      "profile_path": "/iONzt7sP8fm5sjgfSenQQU1RAvS.jpg",
+      "known_for_department": "Acting"
+    },
+    {
+      "id": 1450348,
+      "name": "Joel Crawford",
+      "profile_path": "/3F60mZB4sGgB51jAIglwn6OrUgB.jpg",
+      "known_for_department": "Directing"
+    },
+    {
+      "id": 3012833,
+      "name": "Januel Mercado",
+      "profile_path": "/bbIPLcNMWeeSJ43sdv2ieJcG0zZ.jpg",
+      "known_for_department": "Directing"
+    },
+    {
+      "id": 1181220,
+      "name": "James Ryan",
+      "profile_path": null,
+      "known_for_department": "Editing"
+    },
+    {
+      "id": 2008023,
+      "name": "Natalia Cronembold",
+      "profile_path": null,
+      "known_for_department": "Crew"
+    },
+    {
+      "id": 934181,
+      "name": "Paul Fisher",
+      "profile_path": null,
+      "known_for_department": "Writing"
+    },
+    {
+      "id": 2017052,
+      "name": "Aydrea Walden",
+      "profile_path": "/kOVApwJxys8bCZUshVOCew8lFLV.jpg",
+      "known_for_department": "Production"
+    }
+  ],
+  "crew": [
+    {
+      "id": 5524,
+      "name": "Andrew Adamson",
+      "profile_path": "/qqIAVKAe5LHRbPyZUlptsqlo4Kb.jpg",
+      "known_for_department": "Production"
+    },
+    {
+      "id": 5720,
+      "name": "Christopher Meledandri",
+      "profile_path": "/iRcvLhuIzkUkjCR4C3NKbi2juuv.jpg",
+      "known_for_department": "Production"
+    },
+    {
+      "id": 12965,
+      "name": "Tommy Swerdlow",
+      "profile_path": "/35Nlzsk4uI1A9zOtvu4tYZcLGT.jpg",
+      "known_for_department": "Acting"
+    },
+    {
+      "id": 12965,
+      "name": "Tommy Swerdlow",
+      "profile_path": "/35Nlzsk4uI1A9zOtvu4tYZcLGT.jpg",
+      "known_for_department": "Acting"
+    },
+    {
+      "id": 42034,
+      "name": "Greg P. Russell",
+      "profile_path": null,
+      "known_for_department": "Sound"
+    },
+    {
+      "id": 52803,
+      "name": "Etan Cohen",
+      "profile_path": "/4D6E6weuH21M81QNhAv5FYW7gQX.jpg",
+      "known_for_department": "Writing"
+    },
+    {
+      "id": 59706,
+      "name": "Heitor Pereira",
+      "profile_path": "/6ar1oObMu4Ge1aTXybzPLTBTEZ8.jpg",
+      "known_for_department": "Sound"
+    },
+    {
+      "id": 139686,
+      "name": "John Puglisi",
+      "profile_path": null,
+      "known_for_department": "Art"
+    },
+    {
+      "id": 223247,
+      "name": "Julian Slater",
+      "profile_path": null,
+      "known_for_department": "Sound"
+    },
+    {
+      "id": 223247,
+      "name": "Julian Slater",
+      "profile_path": null,
+      "known_for_department": "Sound"
+    },
+    {
+      "id": 934181,
+      "name": "Paul Fisher",
+      "profile_path": null,
+      "known_for_department": "Writing"
+    },
+    {
+      "id": 936668,
+      "name": "Tom Wheeler",
+      "profile_path": null,
+      "known_for_department": "Writing"
+    },
+    {
+      "id": 1079561,
+      "name": "Karl Armstrong",
+      "profile_path": null,
+      "known_for_department": "Editing"
+    },
+    {
+      "id": 1181220,
+      "name": "James Ryan",
+      "profile_path": null,
+      "known_for_department": "Editing"
+    },
+    {
+      "id": 1194136,
+      "name": "David Lisbe",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1272637,
+      "name": "Chris Stover",
+      "profile_path": null,
+      "known_for_department": "Crew"
+    },
+    {
+      "id": 1297764,
+      "name": "Julien Bocabeille",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1348909,
+      "name": "Garrett O'Neal",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1357061,
+      "name": "Tim Walston",
+      "profile_path": null,
+      "known_for_department": "Sound"
+    },
+    {
+      "id": 1365542,
+      "name": "Paul Pirola",
+      "profile_path": null,
+      "known_for_department": "Sound"
+    },
+    {
+      "id": 1377373,
+      "name": "Christi Soper Hilt",
+      "profile_path": null,
+      "known_for_department": "Production"
+    },
+    {
+      "id": 1391818,
+      "name": "Gaby Moreno",
+      "profile_path": null,
+      "known_for_department": "Acting"
+    },
+    {
+      "id": 1407681,
+      "name": "Rick Hromadka",
+      "profile_path": null,
+      "known_for_department": "Sound"
+    },
+    {
+      "id": 1408301,
+      "name": "Jason W. Jennings",
+      "profile_path": null,
+      "known_for_department": "Sound"
+    },
+    {
+      "id": 1408301,
+      "name": "Jason W. Jennings",
+      "profile_path": null,
+      "known_for_department": "Sound"
+    },
+    {
+      "id": 1422233,
+      "name": "Dan Navarro",
+      "profile_path": "/xADcRyqJAsEDKdJS5luLvKUKFg8.jpg",
+      "known_for_department": "Acting"
+    },
+    {
+      "id": 1447602,
+      "name": "Linda Yeaney",
+      "profile_path": null,
+      "known_for_department": "Sound"
+    },
+    {
+      "id": 1450348,
+      "name": "Joel Crawford",
+      "profile_path": "/3F60mZB4sGgB51jAIglwn6OrUgB.jpg",
+      "known_for_department": "Directing"
+    },
+    {
+      "id": 1453528,
+      "name": "Brian Menz",
+      "profile_path": "/b8gNDoRqszKv9Pl2VyHqdRbYnb7.jpg",
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1453568,
+      "name": "Warren Leonhardt",
+      "profile_path": null,
+      "known_for_department": "Art"
+    },
+    {
+      "id": 1460478,
+      "name": "Jeff Williams",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1461364,
+      "name": "Shiyoon Kim",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1462696,
+      "name": "John Wong",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1462760,
+      "name": "Marek Kochout",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1464417,
+      "name": "Laurent Caneiro",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1464420,
+      "name": "Bill Diaz",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1464422,
+      "name": "Willy Harber",
+      "profile_path": null,
+      "known_for_department": "Crew"
+    },
+    {
+      "id": 1486691,
+      "name": "Rani Naamani",
+      "profile_path": "/er3S8t729nOHMxOyzB36hjRsnkb.jpg",
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1532731,
+      "name": "Mark Edwards",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1561797,
+      "name": "Ashley Lambert",
+      "profile_path": null,
+      "known_for_department": "Production"
+    },
+    {
+      "id": 1577463,
+      "name": "Andrea Blasich",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1584383,
+      "name": "Alexander Snow",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1586922,
+      "name": "Gavin Greenaway",
+      "profile_path": null,
+      "known_for_department": "Sound"
+    },
+    {
+      "id": 1604932,
+      "name": "Dane Stogner",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1615787,
+      "name": "Claire Keane",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1634006,
+      "name": "Ludovic Bouancheau",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1653765,
+      "name": "Lyndon Ruddy",
+      "profile_path": null,
+      "known_for_department": "Art"
+    },
+    {
+      "id": 1669138,
+      "name": "Ken McGill",
+      "profile_path": null,
+      "known_for_department": "Sound"
+    },
+    {
+      "id": 1676322,
+      "name": "Fabio Lignini",
+      "profile_path": "/3ZQaWb3vLGIYnDPtyscHUTp4Hjh.jpg",
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1741447,
+      "name": "Dan Wagner",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1763106,
+      "name": "Chadd Ferron",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1806628,
+      "name": "Heidi Jo Gilbert",
+      "profile_path": null,
+      "known_for_department": "Art"
+    },
+    {
+      "id": 1931805,
+      "name": "KAROL G",
+      "profile_path": "/4NJcr9XeLWTVnOLvrPdon5CZhaT.jpg",
+      "known_for_department": "Acting"
+    },
+    {
+      "id": 1962918,
+      "name": "Ryan Squires",
+      "profile_path": null,
+      "known_for_department": "Sound"
+    },
+    {
+      "id": 1994919,
+      "name": "Robert Christian Huth",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1994929,
+      "name": "Patrick Danaher",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1994932,
+      "name": "Daniel Edwards",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1994940,
+      "name": "Jorge García",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1994949,
+      "name": "Ryan Page",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1995702,
+      "name": "William Salazar",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1999419,
+      "name": "Steven Hornby",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1999421,
+      "name": "Philippe Le Brun",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1999422,
+      "name": "Antony Gray",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1999433,
+      "name": "Martin P. Hopkins",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1999437,
+      "name": "Tyler Phillips",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1999447,
+      "name": "Marco Regina",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1999450,
+      "name": "JP Sans",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1999452,
+      "name": "Ares Deveaux",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 1999453,
+      "name": "Andrew Harkins",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 2000394,
+      "name": "Nate Wragg",
+      "profile_path": null,
+      "known_for_department": "Art"
+    },
+    {
+      "id": 2001576,
+      "name": "Adrien Liv",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 2001580,
+      "name": "Yung Pham",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 2001804,
+      "name": "David Couchariere",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 2001816,
+      "name": "Sean Sexton",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 2001821,
+      "name": "Greg Whittaker",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 2001892,
+      "name": "Michael Lynn",
+      "profile_path": null,
+      "known_for_department": "Production"
+    },
+    {
+      "id": 2001905,
+      "name": "Jakob Hjort Jensen",
+      "profile_path": null,
+      "known_for_department": "Crew"
+    },
+    {
+      "id": 2002359,
+      "name": "Thomas Grummt",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 2002416,
+      "name": "Hans Dastrup",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 2002540,
+      "name": "John Geller",
+      "profile_path": null,
+      "known_for_department": "Crew"
+    },
+    {
+      "id": 2003079,
+      "name": "Michelle Cowart",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 2003082,
+      "name": "David Polk",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 2003083,
+      "name": "Sebastien Wojda",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 2004284,
+      "name": "Robyne Powell",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 2004405,
+      "name": "Justin Weg",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 2005771,
+      "name": "Reece Porter",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 2005813,
+      "name": "Ivan Oviedo",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 2008016,
+      "name": "Mark Swift",
+      "profile_path": null,
+      "known_for_department": "Production"
+    },
+    {
+      "id": 2008023,
+      "name": "Natalia Cronembold",
+      "profile_path": null,
+      "known_for_department": "Crew"
+    },
+    {
+      "id": 2008153,
+      "name": "Mark Roennigke",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 2011749,
+      "name": "Drew Adams",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 2011761,
+      "name": "Patrick Giusiano",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 2012498,
+      "name": "Jacquelyn Karambelas",
+      "profile_path": null,
+      "known_for_department": "Editing"
+    },
+    {
+      "id": 2012542,
+      "name": "Heather Lanza",
+      "profile_path": null,
+      "known_for_department": "Production"
+    },
+    {
+      "id": 2012664,
+      "name": "Onur Yeldan",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 2012683,
+      "name": "Michael Losure",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 2013835,
+      "name": "David Bleich",
+      "profile_path": null,
+      "known_for_department": "Art"
+    },
+    {
+      "id": 2013870,
+      "name": "Elisabeth Franklin",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 2014827,
+      "name": "Joseph Chong",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 2016277,
+      "name": "Ryan Vicik",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 2016420,
+      "name": "Steve Vanseth",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 2017070,
+      "name": "Prashanth Cavale",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 2199346,
+      "name": "Steven R.V. Johnson",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 2292806,
+      "name": "David Shipps",
+      "profile_path": null,
+      "known_for_department": "Sound"
+    },
+    {
+      "id": 2422568,
+      "name": "Jeremy Schaefer",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 2737712,
+      "name": "Sam Rogers",
+      "profile_path": null,
+      "known_for_department": "Sound"
+    },
+    {
+      "id": 2775535,
+      "name": "Shir Baron",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 2826234,
+      "name": "Mia Stewart",
+      "profile_path": null,
+      "known_for_department": "Sound"
+    },
+    {
+      "id": 2923782,
+      "name": "Ian McQue",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 2972900,
+      "name": "Maarten Lemmens",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 3012833,
+      "name": "Januel Mercado",
+      "profile_path": "/bbIPLcNMWeeSJ43sdv2ieJcG0zZ.jpg",
+      "known_for_department": "Directing"
+    },
+    {
+      "id": 3018953,
+      "name": "Derek Cheung",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 3346703,
+      "name": "Joseph Butler",
+      "profile_path": null,
+      "known_for_department": "Editing"
+    },
+    {
+      "id": 3370156,
+      "name": "Naz Ghodrati-Azadi",
+      "profile_path": null,
+      "known_for_department": "Art"
+    },
+    {
+      "id": 3467234,
+      "name": "Joseph Feinsilver",
+      "profile_path": null,
+      "known_for_department": "Art"
+    },
+    {
+      "id": 3551548,
+      "name": "Jesús Alonso Iglesias",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 3558886,
+      "name": "Brendan Kirschbaum",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 3558887,
+      "name": "Lindsey Butterworth Langston",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 3558895,
+      "name": "Emily Springer",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 3558899,
+      "name": "Kelly Vawter",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 3861002,
+      "name": "Katie Parody",
+      "profile_path": null,
+      "known_for_department": "Editing"
+    },
+    {
+      "id": 3861004,
+      "name": "Randy Spahr",
+      "profile_path": null,
+      "known_for_department": "Editing"
+    },
+    {
+      "id": 3861014,
+      "name": "Brooke Shay Bradford",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 3861021,
+      "name": "Lisa Briggs Sachs",
+      "profile_path": null,
+      "known_for_department": "Production"
+    },
+    {
+      "id": 3861023,
+      "name": "Zachary Glynn",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 3861027,
+      "name": "Alvaro Michelena",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 3861030,
+      "name": "Christopher Gonzalez",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 3861035,
+      "name": "Christopher Campagna",
+      "profile_path": null,
+      "known_for_department": "Sound"
+    },
+    {
+      "id": 3861036,
+      "name": "Adam Shaw",
+      "profile_path": null,
+      "known_for_department": "Sound"
+    },
+    {
+      "id": 3861278,
+      "name": "Naveen Selvanathan",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 3861279,
+      "name": "Daniel Cacouault",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 3861280,
+      "name": "Wayne Tsay",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 3861281,
+      "name": "Sébastian Piquet",
+      "profile_path": null,
+      "known_for_department": "Visual Effects"
+    },
+    {
+      "id": 3863269,
+      "name": "Lori Chen",
+      "profile_path": null,
+      "known_for_department": "Production"
+    }
+  ],
+  "director": "Joel Crawford"
 }

@@ -1,15 +1,9 @@
-import { useEffect, useState } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import { Text, Container, Flex, Box, Tag, Button } from '@chakra-ui/react';
 import { FaPlay } from 'react-icons/fa';
 import { MovieBanner, MovieDetails } from '../../types/movie';
-import { api } from '../../api';
-import {
-  getPopularMovies,
-  getMovieById,
-  getMovieCredits,
-} from '../../lib/movies';
+import { getPopularMovies, getMovieDetails } from '../../lib/movies';
 import { getYear, formatDate } from '../../utils/date';
 import { Banner, Poster } from '../../components';
 
@@ -31,7 +25,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const id = params?.id;
-  const movie = await getMovieById(id);
+  const movie = await getMovieDetails(id);
 
   return {
     props: {
@@ -42,7 +36,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 export default function MoviePage(props: MovieDetails) {
   const {
-    id,
     title,
     release_date,
     status,
@@ -51,31 +44,9 @@ export default function MoviePage(props: MovieDetails) {
     backdrop_path,
     poster_path,
     genres,
+    director,
   } = props;
-  const [director, setDirector] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const providers = await api.get(
-          `/movie/${id}/watch/providers?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`
-        );
-        const credits = await getMovieCredits(id);
-
-        console.log({ providers, credits });
-        setDirector(
-          credits?.crew.find(
-            (c: { known_for_department: string }) =>
-              c.known_for_department === 'Directing'
-          ).name
-        );
-      } catch (error) {
-        console.log('There is something wrong with watch provider API!');
-        console.error(error);
-      }
-    };
-    fetchData();
-  }, []);
+  console.log({ props });
 
   return (
     <>
