@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import { MovieBanner, MovieDetails } from '../../types';
-import { getPopularMovies, getMovieById } from '../../services';
+import { getPopularMovies, getMovieById } from '../../lib/movies';
 import { Banner } from '../../components';
 
 export const getStaticPaths: GetStaticPaths = async () => {
