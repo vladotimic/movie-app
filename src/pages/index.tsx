@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { GetServerSideProps } from 'next';
 import { MovieBase, MovieBanner } from '../types/movie';
 import { MovieSection, Header } from '../components';
-import { getPopularMovies, getMoviesByGenre } from '../services';
+import { getPopularMovies, getMoviesByGenre } from '../lib/movies';
 
 interface Props {
   popular: MovieBanner[];
