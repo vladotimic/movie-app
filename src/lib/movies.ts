@@ -1,5 +1,5 @@
 import { api } from '../api';
-import { popular } from '../data';
+import { popular, singleMovie } from '../data';
 import { MovieBase, MovieBanner, Genre } from '../types/movie';
 import { genres, fallback } from '../constants/genres';
 
@@ -35,6 +35,9 @@ export const getMovieById = async (
 ) => {
   if (id) {
     try {
+      if (env === 'development') {
+        return singleMovie;
+      }
       const { data } = await api.get(
         `/movie/${id}?api_key=${apiKey}&language=en-US`
       );

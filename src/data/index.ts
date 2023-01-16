@@ -1,4 +1,5 @@
 import popular from './popular.json';
+import singleMovie from './singleMovie.json';
 import horror from './horror.json';
 import thriller from './thriller.json';
 import action from './action.json';
@@ -28,4 +29,5 @@ export {
   scifi,
   war,
   mystery,
+  singleMovie,
 };
