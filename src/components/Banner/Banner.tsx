@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Container } from '@chakra-ui/react';
 
 interface Props {
   children?: React.ReactNode;
@@ -14,7 +14,13 @@ const Banner = (props: Props) => {
       w="100%"
       h="80vh"
     >
-      {children}
+      <Container
+        position="relative"
+        zIndex="1"
+        pt="5rem"
+      >
+        {children}
+      </Container>
       <Box
         position="absolute"
         w="100%"
@@ -31,15 +37,9 @@ const Banner = (props: Props) => {
         position="absolute"
         bottom="0"
         w="100%"
-        h="5rem"
-        bgGradient="linear(to-b, transparent, black)"
-      />
-      <Box
-        position="absolute"
-        top="0"
-        w="100%"
         h="100%"
-        bgGradient="linear(to-l, transparent, black)"
+        bg="black"
+        opacity="0.7"
       />
     </Box>
   );

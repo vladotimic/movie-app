@@ -1,6 +1,6 @@
 import { api } from '../api';
 import { popular, singleMovie } from '../data';
-import { MovieBase, MovieBanner, Genre } from '../types/movie';
+import { MovieBase, MovieBanner, Genre, MovieCredits } from '../types/movie';
 import { genres, fallback } from '../constants/genres';
 
 const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
@@ -68,6 +68,41 @@ export const getMoviesByGenre = async (genre: Genre) => {
     });
   } catch (error) {
     console.log('There is something wrong with genre movie API!');
+    console.error(error);
+  }
+};
+
+export const getWatchProvider = async (
+  id: number | string | string[] | undefined
+) => {
+  try {
+    const data = await api.get(
+      `/movie/${id}/watch/providers?api_key=${apiKey}`
+    );
+    return data;
+  } catch (error) {
+    console.log('There is something wrong with watch provider API!');
+    console.error(error);
+  }
+};
+
+export const getMovieCredits = async (
+  id: number | string | string[] | undefined
+) => {
+  try {
+    const { data } = await api.get(`/movie/${id}/credits?api_key=${apiKey}`);
+    return {
+      cast: data?.cast?.map((cast: MovieCredits) => {
+        const { id, name, profile_path, known_for_department } = cast;
+        return { id, name, profile_path, known_for_department };
+      }),
+      crew: data?.crew?.map((crew: MovieCredits) => {
+        const { id, known_for_department, name, profile_path } = crew;
+        return { id, known_for_department, name, profile_path };
+      }),
+    };
+  } catch (error) {
+    console.log('There is something wrong with credits API!');
     console.error(error);
   }
 };

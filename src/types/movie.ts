@@ -17,6 +17,14 @@ export interface MovieDetails extends MovieBase, MovieBanner {
   runtime: number;
   status: string;
   poster_path: string;
+  genres: [{ id: number; name: string }];
+}
+
+export interface MovieCredits {
+  id: number;
+  name: string;
+  profile_path: string;
+  known_for_department: string;
 }
 
 export type Genre =
