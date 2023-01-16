@@ -18,6 +18,7 @@ const Banner = (props: Props) => {
         position="relative"
         zIndex="1"
         pt="5rem"
+        maxW="container.xl"
       >
         {children}
       </Container>
@@ -32,6 +33,13 @@ const Banner = (props: Props) => {
         backgroundSize="cover"
         backgroundRepeat="no-repeat"
         backgroundPosition="50% 50%"
+      />
+      <Box
+        position="absolute"
+        bottom="0"
+        w="100%"
+        h="5rem"
+        bgGradient="linear(to-b, transparent, black)"
       />
       <Box
         position="absolute"

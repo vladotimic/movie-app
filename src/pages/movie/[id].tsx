@@ -9,7 +9,7 @@ import {
   getMovieById,
   getMovieCredits,
 } from '../../lib/movies';
-import { getYear } from '../../utils/date';
+import { getYear, formatDate } from '../../utils/date';
 import { Banner, Poster } from '../../components';
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -82,16 +82,22 @@ export default function MoviePage(props: MovieDetails) {
         <title>{title}</title>
       </Head>
       <Banner imgUrl={backdrop_path}>
-        <Flex>
-          <Box w="25%">
+        <Flex
+          flexDirection={{ base: 'column', md: 'row' }}
+          gap={5}
+        >
+          <Box
+            w={{ base: '100%', sm: '50%', lg: '30%', xl: '25%' }}
+            alignSelf="center"
+          >
             <Poster imgUrl={poster_path} />
           </Box>
           <Box
-            w="75%"
-            ml="3rem"
+            w={{ base: '100%', md: '70%' }}
+            mt={{ base: '3rem', md: 0 }}
           >
             <Text
-              fontSize="4xl"
+              fontSize={{ base: '2xl', md: '3xl', lg: '4xl' }}
               fontWeight="700"
             >
               {title}
@@ -106,43 +112,56 @@ export default function MoviePage(props: MovieDetails) {
             <Box
               display="flex"
               alignItems="center"
-              my="1rem"
+              flexWrap="wrap"
+              my="0.5rem"
             >
-              <Text
-                fontSize="lg"
-                fontWeight="500"
+              <Box
+                display="flex"
+                mt="0.5rem"
               >
-                Status:
-              </Text>
-              <Tag
-                mx="0.5rem"
-                borderRadius="full"
-                variant="solid"
-                colorScheme={status === 'Released' ? 'green' : 'red'}
+                <Text
+                  fontSize="lg"
+                  fontWeight="500"
+                >
+                  Status:
+                </Text>
+                <Tag
+                  mx="0.5rem"
+                  borderRadius="full"
+                  variant="solid"
+                  colorScheme={status === 'Released' ? 'green' : 'red'}
+                >
+                  {status}
+                </Tag>
+              </Box>
+
+              <Box
+                display="flex"
+                mt="0.5rem"
               >
-                {status}
-              </Tag>
-              <Text
-                fontSize="lg"
-                fontWeight="500"
-                ml="1rem"
-                mr="0.5rem"
-              >
-                Genres:
-              </Text>
-              {genres.map((genre) => {
-                const { id, name } = genre;
-                return (
-                  <Tag
-                    key={id}
-                    mx="0.2rem"
-                    borderRadius="full"
-                    variant="solid"
-                  >
-                    {name}
-                  </Tag>
-                );
-              })}
+                <Text
+                  fontSize="lg"
+                  fontWeight="500"
+                  mr="0.5rem"
+                >
+                  Genres:
+                </Text>
+                <Box>
+                  {genres.map((genre) => {
+                    const { id, name } = genre;
+                    return (
+                      <Tag
+                        key={id}
+                        m="0.2rem"
+                        borderRadius="full"
+                        variant="solid"
+                      >
+                        {name}
+                      </Tag>
+                    );
+                  })}
+                </Box>
+              </Box>
             </Box>
 
             <Text
@@ -160,12 +179,7 @@ export default function MoviePage(props: MovieDetails) {
             >
               Overview
             </Text>
-            <Text
-              w="70%"
-              mt="0.5rem"
-            >
-              {overview}
-            </Text>
+            <Text mt="0.5rem">{overview}</Text>
             {director && (
               <Text
                 fontSize="xl"
@@ -181,6 +195,19 @@ export default function MoviePage(props: MovieDetails) {
                 </Text>
               </Text>
             )}
+            <Text
+              mt="0.5rem"
+              fontSize="xl"
+              fontWeight="700"
+            >
+              Release Date:{' '}
+              <Text
+                as="span"
+                fontWeight="400"
+              >
+                {formatDate(release_date)}
+              </Text>
+            </Text>
           </Box>
         </Flex>
       </Banner>

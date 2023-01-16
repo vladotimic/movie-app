@@ -1,5 +1,4 @@
 import { extendTheme } from '@chakra-ui/react';
-import Container from './components/container';
 
 const theme = extendTheme({
   styles: {
@@ -9,9 +8,6 @@ const theme = extendTheme({
         bg: 'black',
       },
     },
-  },
-  components: {
-    Container,
   },
 });
 
