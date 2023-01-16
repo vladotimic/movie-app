@@ -40,6 +40,7 @@ export default function MoviePage(props: MovieDetails) {
     release_date,
     status,
     overview,
+    spoken_languages,
     tagline,
     backdrop_path,
     poster_path,
@@ -94,6 +95,7 @@ export default function MoviePage(props: MovieDetails) {
                 <Text
                   fontSize="lg"
                   fontWeight="500"
+                  mr="0.5rem"
                 >
                   Status:
                 </Text>
@@ -167,6 +169,19 @@ export default function MoviePage(props: MovieDetails) {
                 </Text>
               </Text>
             )}
+            <Text
+              fontSize="lg"
+              fontWeight="700"
+              mt="0.5rem"
+            >
+              Original Language:{' '}
+              <Text
+                as="span"
+                fontWeight="400"
+              >
+                {spoken_languages[0].name}
+              </Text>
+            </Text>
             <Text
               mt="0.5rem"
               fontSize="lg"

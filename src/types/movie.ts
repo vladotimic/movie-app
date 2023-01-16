@@ -19,6 +19,7 @@ export interface MovieGenre extends Base {
 export interface MovieDetails extends Base, MovieBase, MovieBanner {
   imdb_id: string;
   original_title: string;
+  spoken_languages: MovieGenre[];
   tagline: string;
   budget: number;
   revenue: number;
