@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { GetServerSideProps } from 'next';
-import { MovieBase, MovieBanner } from '../types';
+import { MovieBase, MovieBanner } from '../types/movie';
 import { MovieSection, Header } from '../components';
 import { getPopularMovies, getMoviesByGenre } from '../services';
 

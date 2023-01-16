@@ -1,6 +1,6 @@
-import { client } from '../axios';
+import { api } from '../api';
 import { popular } from '../data';
-import { MovieBase, MovieBanner, Genre } from '../types';
+import { MovieBase, MovieBanner, Genre } from '../types/movie';
 import { genres, fallback } from '../constants/genres';
 
 const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
@@ -11,7 +11,7 @@ export const getPopularMovies = async () => {
     if (env === 'development') {
       return popular;
     }
-    const { data } = await client.get(
+    const { data } = await api.get(
       `/movie/popular?api_key=${apiKey}&language=en-US&page=1`
     );
 
@@ -35,7 +35,7 @@ export const getMovieById = async (
 ) => {
   if (id) {
     try {
-      const { data } = await client.get(
+      const { data } = await api.get(
         `/movie/${id}?api_key=${apiKey}&language=en-US`
       );
       return data;
@@ -51,7 +51,7 @@ export const getMoviesByGenre = async (genre: Genre) => {
     if (env === 'development') {
       return fallback[genre];
     }
-    const { data } = await client.get(
+    const { data } = await api.get(
       `/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_video=ture&page=1&with_genres=${genres[genre]}`
     );
     return data?.results.map((movie: MovieBase) => {

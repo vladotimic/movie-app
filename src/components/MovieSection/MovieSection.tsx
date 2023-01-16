@@ -5,7 +5,7 @@ import { A11y } from 'swiper';
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/a11y';
-import { MovieBase } from '../../types';
+import { MovieBase } from '../../types/movie';
 import { Card } from '../';
 
 interface Props {

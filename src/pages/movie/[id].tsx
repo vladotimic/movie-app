@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
-import { MovieBanner, MovieDetails } from '../../types';
+import { MovieBanner, MovieDetails } from '../../types/movie';
 import { getPopularMovies, getMovieById } from '../../services';
 import { Banner } from '../../components';
 
