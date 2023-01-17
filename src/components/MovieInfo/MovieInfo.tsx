@@ -1,8 +1,8 @@
 import { Text, Flex, Box, Tag, Button } from '@chakra-ui/react';
 import { FaPlay } from 'react-icons/fa';
-import { MovieGenre } from '../../types/movie';
-import { getYear, formatDate } from '../../utils/date';
-import { Poster } from '..';
+import { MovieGenre } from '@/types/movie';
+import { getYear, formatDate } from '@/utils/date';
+import { Poster } from '@/components';
 
 interface Props {
   imgUrl: string;

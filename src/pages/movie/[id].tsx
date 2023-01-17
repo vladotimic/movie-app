@@ -2,9 +2,9 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { Container } from '@chakra-ui/react';
-import { MovieBanner, MovieDetails } from '../../types/movie';
-import { getPopularMovies, getMovieDetails } from '../../lib/movies';
-import { Banner, MovieInfo, CastSection } from '../../components';
+import { MovieBanner, MovieDetails } from '@/types/movie';
+import { getPopularMovies, getMovieDetails } from '@/lib/movies';
+import { Banner, MovieInfo, CastSection } from '@/components';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const data = await getPopularMovies();

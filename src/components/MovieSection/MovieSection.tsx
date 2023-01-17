@@ -4,8 +4,8 @@ import { A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/a11y';
-import { MovieBase } from '../../types/movie';
-import { Card, SlideButton } from '../';
+import { MovieBase } from '@/types/movie';
+import { Card, SlideButton } from '@/components';
 
 interface Props {
   title: string;

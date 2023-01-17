@@ -12,7 +12,7 @@ import {
   scifi,
   war,
   mystery,
-} from '../data';
+} from '@/data';
 
 export const genres = {
   action: 28,

@@ -1,9 +1,9 @@
-import { getDirector } from './../utils/movie';
-import { api } from '../api';
-import { popular, singleMovie } from '../data';
-import { MovieBase, MovieBanner, Genre, MovieTrailer } from '../types/movie';
-import { genres, fallback } from '../constants/genres';
+import { getDirector } from '@/utils/movie';
 import { filterCredits } from '@/utils/movie';
+import { api } from '@/api';
+import { popular, singleMovie } from '@/data';
+import { MovieBase, MovieBanner, Genre, MovieTrailer } from '@/types/movie';
+import { genres, fallback } from '@/constants/genres';
 
 const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
 const env = process.env.NEXT_PUBLIC_NODE_ENV;
@@ -154,11 +154,7 @@ export const getMovieDetails = async (id: Id) => {
     if (env === 'development') {
       return singleMovie;
     }
-    // First solution
-    // const movieById = await getMovieById(id);
-    // const credits = await getMovieCredits(id);
 
-    // Promise.all way
     const [movieById, credits] = await Promise.all([
       await getMovieById(id),
       await getMovieCredits(id),
