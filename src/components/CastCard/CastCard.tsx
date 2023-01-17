@@ -19,15 +19,28 @@ const CastCard = (props: Props) => {
         position="relative"
         w="auto"
         h="9rem"
+        bg="gray.300"
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
       >
-        <Image
-          src={`https://image.tmdb.org/t/p/original${imgUrl}`}
-          alt="Cast poster picture"
-          fill
-          sizes="(max-width: 768px) 100vw,
+        {!imgUrl ? (
+          <Image
+            src="/broken-img.svg"
+            width={50}
+            height={50}
+            alt="Broken path"
+          />
+        ) : (
+          <Image
+            src={`https://image.tmdb.org/t/p/original${imgUrl}`}
+            alt="Cast poster picture"
+            fill
+            sizes="(max-width: 768px) 100vw,
                  (max-width: 1200px) 50vw,
                  33vw"
-        />
+          />
+        )}
       </Box>
       <Box
         bg="blue.900"
