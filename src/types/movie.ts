@@ -16,6 +16,11 @@ export interface MovieGenre extends Base {
   name: string;
 }
 
+export interface MovieTrailer {
+  key: string;
+  type: string;
+}
+
 export interface MovieDetails extends Base, MovieBase, MovieBanner {
   imdb_id: string;
   original_title: string;
@@ -31,6 +36,7 @@ export interface MovieDetails extends Base, MovieBase, MovieBanner {
   cast: MovieCredits[];
   crew: MovieCredits[];
   director: string;
+  trailer: MovieTrailer[];
 }
 
 export interface MovieCredits extends Base, MovieGenre {

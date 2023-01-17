@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { Container } from '@chakra-ui/react';
 import { MovieBanner, MovieDetails } from '../../types/movie';
 import { getPopularMovies, getMovieDetails } from '../../lib/movies';
@@ -46,6 +47,12 @@ export default function MoviePage(props: MovieDetails) {
     director,
     cast,
   } = props;
+  console.log(props);
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>

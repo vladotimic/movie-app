@@ -1,7 +1,7 @@
 import { getDirector } from './../utils/movie';
 import { api } from '../api';
 import { popular, singleMovie } from '../data';
-import { MovieBase, MovieBanner, Genre } from '../types/movie';
+import { MovieBase, MovieBanner, Genre, MovieTrailer } from '../types/movie';
 import { genres, fallback } from '../constants/genres';
 import { filterCredits } from '@/utils/movie';
 
@@ -41,9 +41,56 @@ export const getMovieById = async (id: Id) => {
         return singleMovie;
       }
       const { data } = await api.get(
-        `/movie/${id}?api_key=${apiKey}&language=en-US`
+        `/movie/${id}?api_key=${apiKey}&language=en-US&&append_to_response=videos`
       );
-      return data;
+
+      const {
+        title,
+        original_title,
+        overview,
+        genres,
+        imdb_id,
+        homepage,
+        backdrop_path,
+        poster_path,
+        budget,
+        revenue,
+        videos,
+        spoken_languages,
+        status,
+        runtime,
+        release_date,
+        tagline,
+      } = data;
+
+      const trailer: MovieTrailer[] = videos?.results
+        ?.map((video: MovieTrailer) => {
+          const { key, type } = video;
+          return {
+            key,
+            type,
+          };
+        })
+        .filter((video: MovieTrailer) => video.type === 'Trailer');
+
+      return {
+        title,
+        original_title,
+        overview,
+        genres,
+        imdb_id,
+        homepage,
+        backdrop_path,
+        poster_path,
+        budget,
+        revenue,
+        spoken_languages,
+        status,
+        runtime,
+        release_date,
+        tagline,
+        trailer,
+      };
     } catch (error) {
       console.log('There is something wrong with movie API!');
       console.error(error);
@@ -107,12 +154,75 @@ export const getMovieDetails = async (id: Id) => {
     if (env === 'development') {
       return singleMovie;
     }
-    const movieById = await getMovieById(id);
-    const credits = await getMovieCredits(id);
+    // First solution
+    // const movieById = await getMovieById(id);
+    // const credits = await getMovieCredits(id);
+
+    // Promise.all ways
+    const [movieById, credits] = await Promise.all([
+      await getMovieById(id),
+      await getMovieCredits(id),
+    ]);
 
     return {
       ...movieById,
       ...credits,
+    };
+  } catch (error) {
+    console.log('There is something wrong with movie API!');
+    console.error(error);
+  }
+};
+
+export const getAllPopularMovies = async () => {
+  try {
+    const [
+      popular,
+      action,
+      comedy,
+      horror,
+      thriller,
+      adventure,
+      animation,
+      crime,
+      drama,
+      fantasy,
+      mystery,
+      scifi,
+      war,
+      romance,
+    ] = await Promise.all([
+      await getPopularMovies(),
+      await getMoviesByGenre('action'),
+      await getMoviesByGenre('comedy'),
+      await getMoviesByGenre('horror'),
+      await getMoviesByGenre('thriller'),
+      await getMoviesByGenre('adventure'),
+      await getMoviesByGenre('animation'),
+      await getMoviesByGenre('crime'),
+      await getMoviesByGenre('drama'),
+      await getMoviesByGenre('fantasy'),
+      await getMoviesByGenre('mystery'),
+      await getMoviesByGenre('scifi'),
+      await getMoviesByGenre('war'),
+      await getMoviesByGenre('romance'),
+    ]);
+
+    return {
+      popular,
+      action,
+      comedy,
+      horror,
+      thriller,
+      adventure,
+      animation,
+      crime,
+      drama,
+      fantasy,
+      mystery,
+      scifi,
+      war,
+      romance,
     };
   } catch (error) {
     console.log('There is something wrong with movie API!');
