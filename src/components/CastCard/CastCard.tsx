@@ -13,7 +13,7 @@ const CastCard = (props: Props) => {
     <Box
       borderRadius="0.2rem"
       overflow="hidden"
-      w="8rem"
+      w="7rem"
     >
       <Box
         position="relative"

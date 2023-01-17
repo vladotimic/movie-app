@@ -12,7 +12,7 @@ const Banner = (props: Props) => {
     <Box
       position="relative"
       w="100%"
-      h="80vh"
+      h={{ md: '80vh' }}
     >
       <Container
         position="relative"

@@ -59,7 +59,8 @@ const MovieInfo = (props: Props) => {
       gap={5}
     >
       <Box
-        w={{ base: '100%', sm: '50%', lg: '30%', xl: '25%' }}
+        w="100%"
+        maxW="22rem"
         alignSelf="center"
       >
         <Poster imgUrl={imgUrl} />
