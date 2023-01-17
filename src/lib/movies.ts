@@ -176,6 +176,22 @@ export const getMovieDetails = async (id: Id) => {
 
 export const getAllPopularMovies = async () => {
   try {
+    const genres: Genre[] = [
+      'action',
+      'comedy',
+      'horror',
+      'thriller',
+      'adventure',
+      'animation',
+      'crime',
+      'drama',
+      'fantasy',
+      'mystery',
+      'scifi',
+      'war',
+      'romance',
+    ];
+
     const [
       popular,
       action,
@@ -193,19 +209,9 @@ export const getAllPopularMovies = async () => {
       romance,
     ] = await Promise.all([
       await getPopularMovies(),
-      await getMoviesByGenre('action'),
-      await getMoviesByGenre('comedy'),
-      await getMoviesByGenre('horror'),
-      await getMoviesByGenre('thriller'),
-      await getMoviesByGenre('adventure'),
-      await getMoviesByGenre('animation'),
-      await getMoviesByGenre('crime'),
-      await getMoviesByGenre('drama'),
-      await getMoviesByGenre('fantasy'),
-      await getMoviesByGenre('mystery'),
-      await getMoviesByGenre('scifi'),
-      await getMoviesByGenre('war'),
-      await getMoviesByGenre('romance'),
+      ...genres.map(async (genre: Genre) => {
+        return await getMoviesByGenre(genre);
+      }),
     ]);
 
     return {

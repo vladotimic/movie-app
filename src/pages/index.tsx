@@ -3,11 +3,7 @@ import Head from 'next/head';
 import { GetServerSideProps } from 'next';
 import { MovieBase, MovieBanner } from '../types/movie';
 import { MovieSection, Header } from '../components';
-import {
-  // getPopularMovies,
-  // getMoviesByGenre,
-  getAllPopularMovies,
-} from '../lib/movies';
+import { getAllPopularMovies } from '../lib/movies';
 
 interface Props {
   popular: MovieBanner[];
@@ -27,43 +23,11 @@ interface Props {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  // const popular = await getPopularMovies();
-  // const action = await getMoviesByGenre('action');
-  // const comedy = await getMoviesByGenre('comedy');
-  // const horror = await getMoviesByGenre('horror');
-  // const thriller = await getMoviesByGenre('thriller');
-  // const adventure = await getMoviesByGenre('adventure');
-  // const animation = await getMoviesByGenre('animation');
-  // const crime = await getMoviesByGenre('crime');
-  // const drama = await getMoviesByGenre('drama');
-  // const fantasy = await getMoviesByGenre('fantasy');
-  // const mystery = await getMoviesByGenre('mystery');
-  // const scifi = await getMoviesByGenre('scifi');
-  // const war = await getMoviesByGenre('war');
-  // const romance = await getMoviesByGenre('romance');
-
-  //  props: {
-  //     popular,
-  //     action,
-  //     comedy,
-  //     horror,
-  //     thriller,
-  //     adventure,
-  //     animation,
-  //     crime,
-  //     drama,
-  //     fantasy,
-  //     mystery,
-  //     scifi,
-  //     war,
-  //     romance,
-  //   },
-
-  const all = await getAllPopularMovies();
+  const movies = await getAllPopularMovies();
 
   return {
     props: {
-      ...all,
+      ...movies,
     },
   };
 };
