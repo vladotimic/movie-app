@@ -1,4 +1,3 @@
-import { Genres } from '../types/movie';
 import {
   horror,
   thriller,
@@ -15,7 +14,7 @@ import {
   mystery,
 } from '../data';
 
-export const genres: Genres = {
+export const genres = {
   action: 28,
   comedy: 35,
   adventure: 12,
