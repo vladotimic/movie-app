@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { Container } from '@chakra-ui/react';
 import { MovieBanner, MovieDetails } from '../../types/movie';
 import { getPopularMovies, getMovieDetails } from '../../lib/movies';
-import { Banner, MovieInfo } from '../../components';
+import { Banner, MovieInfo, CastSection } from '../../components';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const data = await getPopularMovies();
@@ -44,6 +44,7 @@ export default function MoviePage(props: MovieDetails) {
     poster_path,
     genres,
     director,
+    cast,
   } = props;
 
   return (
@@ -64,7 +65,9 @@ export default function MoviePage(props: MovieDetails) {
           status={status}
         />
       </Banner>
-      <Container position="relative"></Container>
+      <Container maxW="container.xl">
+        <CastSection casts={cast} />
+      </Container>
     </>
   );
 }

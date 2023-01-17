@@ -1,64 +1,16 @@
 import Link from 'next/link';
-import { Box, Text, Button } from '@chakra-ui/react';
-import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
+import { Box, Text } from '@chakra-ui/react';
 import { A11y } from 'swiper';
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/a11y';
 import { MovieBase } from '../../types/movie';
-import { Card } from '../';
+import { Card, SlideButton } from '../';
 
 interface Props {
   title: string;
   movies: MovieBase[];
 }
-
-interface ButtonProps {
-  type: 'next' | 'prev';
-}
-
-const SlideButton = ({ type }: ButtonProps) => {
-  const swiper = useSwiper();
-  const btnPosition = type === 'next' ? { right: '0' } : { left: '0' };
-  const gradient = type === 'next' ? 'to-r' : 'to-l';
-  const handleSlide = () => {
-    return type === 'next' ? swiper.slideNext() : swiper.slidePrev();
-  };
-
-  return (
-    <Button
-      position="absolute"
-      top="-3"
-      zIndex="2"
-      h="110%"
-      borderRadius="none"
-      bg="transparent"
-      bgGradient={`linear(${gradient}, rgba(0,0,0,0), #000)`}
-      sx={btnPosition}
-      _hover={{
-        bg: 'transparent',
-        bgGradient: `linear(${gradient}, rgba(0,0,0,0), #000)`,
-      }}
-      _active={{
-        bg: 'transparent',
-        bgGradient: `linear(${gradient}, rgba(0,0,0,0), #000)`,
-      }}
-      onClick={handleSlide}
-    >
-      {type === 'next' ? (
-        <ChevronRightIcon
-          boxSize="3rem"
-          color="red"
-        />
-      ) : (
-        <ChevronLeftIcon
-          boxSize="3rem"
-          color="red"
-        />
-      )}
-    </Button>
-  );
-};
 
 const MovieSection = (props: Props) => {
   const { title, movies } = props;
