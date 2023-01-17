@@ -5,21 +5,14 @@ import { MovieBase, MovieBanner } from '../types/movie';
 import { MovieSection, Header } from '../components';
 import { getAllPopularMovies } from '../lib/movies';
 
+interface Movie {
+  title: string;
+  movies: MovieBase[];
+}
+
 interface Props {
   popular: MovieBanner[];
-  horror: MovieBase[];
-  action: MovieBase[];
-  comedy: MovieBase[];
-  thriller: MovieBase[];
-  adventure: MovieBase[];
-  animation: MovieBase[];
-  crime: MovieBase[];
-  drama: MovieBase[];
-  fantasy: MovieBase[];
-  mystery: MovieBase[];
-  scifi: MovieBase[];
-  war: MovieBase[];
-  romance: MovieBase[];
+  movies: Movie[];
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -34,22 +27,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
 export default function Home(props: Props) {
   const [index, setIndex] = useState(0);
-  const {
-    popular,
-    action,
-    comedy,
-    horror,
-    thriller,
-    adventure,
-    animation,
-    crime,
-    drama,
-    fantasy,
-    mystery,
-    scifi,
-    war,
-    romance,
-  } = props;
+  const { popular, movies } = props;
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -86,58 +64,17 @@ export default function Home(props: Props) {
       <Header {...popular[index]} />
 
       <main>
-        <MovieSection
-          title="Action"
-          movies={action}
-        />
-        <MovieSection
-          title="Comedy"
-          movies={comedy}
-        />
-        <MovieSection
-          title="Horror"
-          movies={horror}
-        />
-        <MovieSection
-          title="Thriller"
-          movies={thriller}
-        />
-        <MovieSection
-          title="Adventure"
-          movies={adventure}
-        />
-        <MovieSection
-          title="Animation"
-          movies={animation}
-        />
-        <MovieSection
-          title="Crime"
-          movies={crime}
-        />
-        <MovieSection
-          title="Drama"
-          movies={drama}
-        />
-        <MovieSection
-          title="Mystery"
-          movies={mystery}
-        />
-        <MovieSection
-          title="Fantasy"
-          movies={fantasy}
-        />
-        <MovieSection
-          title="Science Fiction"
-          movies={scifi}
-        />
-        <MovieSection
-          title="War"
-          movies={war}
-        />
-        <MovieSection
-          title="Romance"
-          movies={romance}
-        />
+        {movies &&
+          movies.map((movie: Movie, index: number) => {
+            const { title, movies } = movie;
+            return (
+              <MovieSection
+                key={`movie-section-id-${index + 1}`}
+                title={title}
+                movies={movies}
+              />
+            );
+          })}
       </main>
     </>
   );

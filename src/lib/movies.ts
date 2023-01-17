@@ -158,7 +158,7 @@ export const getMovieDetails = async (id: Id) => {
     // const movieById = await getMovieById(id);
     // const credits = await getMovieCredits(id);
 
-    // Promise.all ways
+    // Promise.all way
     const [movieById, credits] = await Promise.all([
       await getMovieById(id),
       await getMovieCredits(id),
@@ -192,43 +192,23 @@ export const getAllPopularMovies = async () => {
       'romance',
     ];
 
-    const [
-      popular,
-      action,
-      comedy,
-      horror,
-      thriller,
-      adventure,
-      animation,
-      crime,
-      drama,
-      fantasy,
-      mystery,
-      scifi,
-      war,
-      romance,
-    ] = await Promise.all([
+    const [popular, ...rest] = await Promise.all([
       await getPopularMovies(),
       ...genres.map(async (genre: Genre) => {
         return await getMoviesByGenre(genre);
       }),
     ]);
 
+    const movies = rest.map((item, index) => {
+      return {
+        title: genres[index][0].toUpperCase() + genres[index].slice(1),
+        movies: item,
+      };
+    });
+
     return {
       popular,
-      action,
-      comedy,
-      horror,
-      thriller,
-      adventure,
-      animation,
-      crime,
-      drama,
-      fantasy,
-      mystery,
-      scifi,
-      war,
-      romance,
+      movies,
     };
   } catch (error) {
     console.log('There is something wrong with movie API!');
