@@ -8,7 +8,7 @@ interface ButtonProps {
 
 const SlideButton = ({ type }: ButtonProps) => {
   const swiper = useSwiper();
-  const btnPosition = type === 'next' ? { right: '0' } : { left: '0' };
+  const btnPosition = type === 'next' ? { right: '-4' } : { left: '-4' };
   const gradient = type === 'next' ? 'to-r' : 'to-l';
   const handleSlide = () => {
     return type === 'next' ? swiper.slideNext() : swiper.slidePrev();
