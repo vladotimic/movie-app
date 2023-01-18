@@ -17,6 +17,7 @@ const TrailerModal = (props: Props) => {
     >
       <ModalOverlay />
       <ModalContent maxW="50rem">
+        {/* Disable AdBlocker to remove ERR_BLOCKED_BY_CLIENT */}
         <iframe
           id="ytplayer"
           width="100%"
@@ -24,7 +25,7 @@ const TrailerModal = (props: Props) => {
           src={`https://www.youtube.com/embed/${videoUrl}?autoplay=1&origin=http://example.com&controls=1&rel=1`}
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        ></iframe>
+        />
       </ModalContent>
     </Modal>
   );
