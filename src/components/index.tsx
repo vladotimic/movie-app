@@ -6,6 +6,7 @@ import Header from './Header';
 import Banner from './Banner';
 import Poster from './Poster';
 import SlideButton from './SlideButton';
+import TrailerModal from './TrailerModal';
 
 export {
   Card,
@@ -16,4 +17,5 @@ export {
   Banner,
   SlideButton,
   Poster,
+  TrailerModal,
 };

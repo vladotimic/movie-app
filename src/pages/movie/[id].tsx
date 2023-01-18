@@ -1,12 +1,20 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { Container, Text, Flex, Box, Tag, Button } from '@chakra-ui/react';
+import {
+  Container,
+  Text,
+  Flex,
+  Box,
+  Tag,
+  Button,
+  useDisclosure,
+} from '@chakra-ui/react';
 import { FaPlay } from 'react-icons/fa';
 import { MovieBanner, MovieDetails } from '@/types/movie';
 import { getPopularMovies, getMovieDetails } from '@/lib/movies';
 import { getYear, formatDate } from '@/utils/date';
-import { Banner, CastSection, Poster } from '@/components';
+import { Banner, CastSection, Poster, TrailerModal } from '@/components';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const data = await getPopularMovies();
@@ -72,9 +80,11 @@ export default function MoviePage(props: MovieDetails) {
     genres,
     director,
     cast,
+    trailer,
   } = props;
   console.log(props);
   const router = useRouter();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -197,9 +207,15 @@ export default function MoviePage(props: MovieDetails) {
             <Button
               mt="1rem"
               leftIcon={<FaPlay />}
+              onClick={onOpen}
             >
               Play trailer
             </Button>
+            <TrailerModal
+              isOpen={isOpen}
+              videoUrl={trailer[0].key}
+              onClose={onClose}
+            />
           </Box>
         </Flex>
       </Banner>
