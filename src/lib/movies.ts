@@ -29,7 +29,6 @@ export const getPopularMovies = async () => {
       };
     });
   } catch (error) {
-    console.log('There is something wrong with popular API!');
     console.error(error);
   }
 };
@@ -92,7 +91,6 @@ export const getMovieById = async (id: Id) => {
         trailer,
       };
     } catch (error) {
-      console.log('There is something wrong with movie API!');
       console.error(error);
     }
   }
@@ -116,7 +114,6 @@ export const getMoviesByGenre = async (genre: Genre) => {
       };
     });
   } catch (error) {
-    console.log('There is something wrong with genre movie API!');
     console.error(error);
   }
 };
@@ -128,7 +125,6 @@ export const getWatchProvider = async (id: Id) => {
     );
     return data;
   } catch (error) {
-    console.log('There is something wrong with watch provider API!');
     console.error(error);
   }
 };
@@ -144,7 +140,6 @@ export const getMovieCredits = async (id: Id) => {
       director: getDirector(crew),
     };
   } catch (error) {
-    console.log('There is something wrong with credits API!');
     console.error(error);
   }
 };
@@ -165,7 +160,6 @@ export const getMovieDetails = async (id: Id) => {
       ...credits,
     };
   } catch (error) {
-    console.log('There is something wrong with movie API!');
     console.error(error);
   }
 };
@@ -207,7 +201,6 @@ export const getAllPopularMovies = async () => {
       movies,
     };
   } catch (error) {
-    console.log('There is something wrong with movie API!');
     console.error(error);
   }
 };
