@@ -60,7 +60,7 @@ export default function BrowsePage() {
   };
 
   useEffect(() => {
-    if (query) {
+    if (query && query !== search) {
       const term: string = query.toString().replaceAll('%20', ' ').trim();
       setSearch(term);
       handleSearch(term);
