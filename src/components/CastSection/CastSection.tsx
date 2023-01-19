@@ -3,11 +3,11 @@ import { A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/a11y';
-import { MovieCredits } from '@/types/movie';
+import { IMovieCredits } from '@/types/movie';
 import { CastCard, SlideButton } from '@/components';
 
 interface Props {
-  casts: MovieCredits[];
+  casts: IMovieCredits[];
 }
 
 const CastSection = (props: Props) => {
@@ -41,7 +41,7 @@ const CastSection = (props: Props) => {
         >
           <SlideButton type="next" />
           <SlideButton type="prev" />
-          {casts.map((cast: MovieCredits) => {
+          {casts.map((cast: IMovieCredits) => {
             const { id, name, profile_path } = cast;
             return (
               <SwiperSlide key={id}>

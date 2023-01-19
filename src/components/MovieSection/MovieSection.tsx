@@ -4,12 +4,12 @@ import { A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/a11y';
-import { MovieBase } from '@/types/movie';
-import { Card, SlideButton } from '@/components';
+import { IMovieBase } from '@/types/movie';
+import { SlideCard, SlideButton } from '@/components';
 
 interface Props {
   title: string;
-  movies: MovieBase[];
+  movies: IMovieBase[];
 }
 
 const MovieSection = (props: Props) => {
@@ -31,7 +31,7 @@ const MovieSection = (props: Props) => {
         >
           <SlideButton type="next" />
           <SlideButton type="prev" />
-          {movies.map((movie: MovieBase, index: number) => {
+          {movies.map((movie: IMovieBase, index: number) => {
             const { id } = movie;
             const position =
               index === 0
@@ -42,7 +42,7 @@ const MovieSection = (props: Props) => {
             return (
               <SwiperSlide key={id}>
                 <Link href={`/movie/${id}`}>
-                  <Card
+                  <SlideCard
                     movie={movie}
                     position={position}
                   />

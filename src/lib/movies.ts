@@ -2,7 +2,13 @@ import { getDirector } from '@/utils/movie';
 import { filterCredits } from '@/utils/movie';
 import { api } from '@/api';
 import { popular, singleMovie } from '@/data';
-import { MovieBase, MovieBanner, Genre, MovieTrailer } from '@/types/movie';
+import {
+  IMovieBase,
+  IMovieBanner,
+  Genre,
+  IMovieTrailer,
+  IMovieCard,
+} from '@/types/movie';
 import { genres, fallback } from '@/constants/genres';
 
 const apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY;
@@ -19,7 +25,7 @@ export const getPopularMovies = async () => {
       `/movie/popular?api_key=${apiKey}&language=en-US&page=1`
     );
 
-    return data?.results.map((movie: MovieBanner) => {
+    return data?.results.map((movie: IMovieBanner) => {
       const { id, title, backdrop_path, overview } = movie;
       return {
         id,
@@ -62,15 +68,15 @@ export const getMovieById = async (id: Id) => {
         tagline,
       } = data;
 
-      const trailer: MovieTrailer[] = videos?.results
-        ?.map((video: MovieTrailer) => {
+      const trailer: IMovieTrailer[] = videos?.results
+        ?.map((video: IMovieTrailer) => {
           const { key, type } = video;
           return {
             key,
             type,
           };
         })
-        .filter((video: MovieTrailer) => video.type === 'Trailer');
+        .filter((video: IMovieTrailer) => video.type === 'Trailer');
 
       return {
         title,
@@ -104,7 +110,7 @@ export const getMoviesByGenre = async (genre: Genre) => {
     const { data } = await api.get(
       `/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_video=ture&page=1&with_genres=${genres[genre]}`
     );
-    return data?.results.map((movie: MovieBase) => {
+    return data?.results.map((movie: IMovieBase) => {
       const { id, title, backdrop_path, release_date } = movie;
       return {
         id,
@@ -199,6 +205,28 @@ export const getAllPopularMovies = async () => {
     return {
       popular,
       movies,
+    };
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const searchMovies = async (term: string) => {
+  try {
+    const { data } = await api.get(
+      `/search/movie?query=${term}&api_key=${apiKey}&language=en-US&page=1&include_adult=false`
+    );
+    const { results, ...rest } = data;
+    return {
+      ...rest,
+      data: results.map((movie: IMovieCard) => {
+        const { id, title, poster_path } = movie;
+        return {
+          id,
+          title,
+          poster_path,
+        };
+      }),
     };
   } catch (error) {
     console.error(error);

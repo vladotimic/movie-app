@@ -2,15 +2,15 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { Box, Text } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
-import { MovieBase } from '@/types/movie';
+import { IMovieBase } from '@/types/movie';
 import { formatDate } from '@/utils/date';
 
 interface Props {
-  movie: MovieBase;
+  movie: IMovieBase;
   position?: 'first' | 'last' | null;
 }
 
-const Card = (props: Props) => {
+const SlideCard = (props: Props) => {
   const { movie, position } = props;
   const { title, backdrop_path, release_date } = movie;
   const [isHovered, setIsHovered] = useState(false);
@@ -95,4 +95,4 @@ const Card = (props: Props) => {
   );
 };
 
-export default Card;
+export default SlideCard;

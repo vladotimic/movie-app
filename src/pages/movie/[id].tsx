@@ -11,14 +11,14 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import { FaPlay } from 'react-icons/fa';
-import { MovieBanner, MovieDetails } from '@/types/movie';
+import { IMovieBanner, IMovieDetails } from '@/types/movie';
 import { getPopularMovies, getMovieDetails } from '@/lib/movies';
 import { getYear, formatDate } from '@/utils/date';
 import { Banner, CastSection, Poster, TrailerModal } from '@/components';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const data = await getPopularMovies();
-  const paths = data.map((item: MovieBanner) => {
+  const paths = data.map((item: IMovieBanner) => {
     return {
       params: {
         id: item.id.toString(),
@@ -67,7 +67,7 @@ const TextDesc = ({
   );
 };
 
-export default function MoviePage(props: MovieDetails) {
+export default function MoviePage(props: IMovieDetails) {
   const {
     title,
     release_date,

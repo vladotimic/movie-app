@@ -1,6 +1,7 @@
-import Card from './Card';
-import MovieSection from './MovieSection';
+import SlideCard from './SlideCard';
 import CastCard from './CastCard';
+import MovieCard from './MovieCard';
+import MovieSection from './MovieSection';
 import CastSection from './CastSection';
 import Header from './Header';
 import Banner from './Banner';
@@ -9,13 +10,14 @@ import SlideButton from './SlideButton';
 import TrailerModal from './TrailerModal';
 
 export {
-  Card,
-  MovieSection,
+  SlideCard,
   CastCard,
+  MovieCard,
   CastSection,
+  MovieSection,
   Header,
   Banner,
-  SlideButton,
   Poster,
+  SlideButton,
   TrailerModal,
 };
