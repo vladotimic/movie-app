@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import {
   FormControl,
@@ -35,10 +35,10 @@ export default function BrowsePage() {
     }
   };
 
-  const handleSearch = useCallback(async () => {
+  const handleSearch = async (value: string = search) => {
     setIsLoading(true);
     try {
-      const res = await searchMovies(search);
+      const res = await searchMovies(value);
       if (res) {
         console.log({ res });
         setResults(res.data);
@@ -48,7 +48,7 @@ export default function BrowsePage() {
         router.push({
           pathname: `/browse`,
           query: {
-            query: encodeURI(search),
+            query: encodeURI(value),
           },
         });
       }
@@ -57,17 +57,16 @@ export default function BrowsePage() {
     } finally {
       setIsLoading(false);
     }
-    // eslint-disable-next-line
-  }, [search]);
+  };
 
   useEffect(() => {
     if (query) {
-      setSearch(query.toString().replaceAll('%20', ' ').trim());
-      if (search) {
-        handleSearch();
-      }
+      const term: string = query.toString().replaceAll('%20', ' ').trim();
+      setSearch(term);
+      handleSearch(term);
     }
-  }, [handleSearch, query, search]);
+    // eslint-disable-next-line
+  }, [query]);
 
   return (
     <Container maxW="container.xl">
@@ -104,7 +103,7 @@ export default function BrowsePage() {
             />
           </FormControl>
           <Button
-            onClick={handleSearch}
+            onClick={() => handleSearch()}
             borderRadius="none"
             borderTopRightRadius="0.3rem"
             borderBottomRightRadius="0.3rem"
