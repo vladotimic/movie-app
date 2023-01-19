@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/router';
 import {
   FormControl,
@@ -35,13 +35,7 @@ export default function BrowsePage() {
     }
   };
 
-  useEffect(() => {
-    if (query) {
-      setSearch(query.toString().replaceAll('%20', ' ').trim());
-    }
-  }, [query]);
-
-  const handleSearch = async () => {
+  const handleSearch = useCallback(async () => {
     setIsLoading(true);
     try {
       const res = await searchMovies(search);
@@ -63,7 +57,17 @@ export default function BrowsePage() {
     } finally {
       setIsLoading(false);
     }
-  };
+    // eslint-disable-next-line
+  }, [search]);
+
+  useEffect(() => {
+    if (query) {
+      setSearch(query.toString().replaceAll('%20', ' ').trim());
+      if (search) {
+        handleSearch();
+      }
+    }
+  }, [handleSearch, query, search]);
 
   return (
     <Container maxW="container.xl">
