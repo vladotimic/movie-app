@@ -211,10 +211,10 @@ export const getAllPopularMovies = async () => {
   }
 };
 
-export const searchMovies = async (term: string) => {
+export const searchMovies = async (term: string, page = 1) => {
   try {
     const { data } = await api.get(
-      `/search/movie?query=${term}&api_key=${apiKey}&language=en-US&page=1&include_adult=false`
+      `/search/movie?query=${term}&api_key=${apiKey}&language=en-US&page=${page}&include_adult=false`
     );
     const { results, ...rest } = data;
     return {

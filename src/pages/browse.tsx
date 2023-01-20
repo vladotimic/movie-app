@@ -12,18 +12,21 @@ import {
 } from '@chakra-ui/react';
 import { searchMovies } from '@/lib/movies';
 import { IMovieCard } from '@/types/movie';
-import { MovieCard } from '@/components';
+import { MovieCard, Pagination } from '@/components';
 
 export default function BrowsePage() {
   const router = useRouter();
   const query = router.query.query;
+  const page = router.query.page;
 
   const [search, setSearch] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [results, setResults] = useState<IMovieCard[]>([]);
   const [totalResults, setTotalResults] = useState<number>(0);
-  const [page, setPage] = useState<number>(1);
+  const [currentPage, setCurrentPage] = useState<number>(1);
   const [numOfPages, setNumOfPages] = useState<number>(0);
+
+  console.log(currentPage);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
@@ -38,17 +41,17 @@ export default function BrowsePage() {
   const handleSearch = async (value: string = search) => {
     setIsLoading(true);
     try {
-      const res = await searchMovies(value);
-      if (res) {
-        console.log({ res });
-        setResults(res.data);
-        setPage(1);
-        setTotalResults(res.total_results);
-        setNumOfPages(res.total_pages);
+      const result = await searchMovies(value, currentPage);
+      if (result) {
+        console.log(result);
+        setResults(result.data);
+        setTotalResults(result.total_results);
+        setNumOfPages(result.total_pages);
         router.push({
           pathname: `/browse`,
           query: {
             query: encodeURI(value),
+            page: currentPage,
           },
         });
       }
@@ -66,7 +69,16 @@ export default function BrowsePage() {
       handleSearch(term);
     }
     // eslint-disable-next-line
-  }, [query]);
+  }, [query, page, currentPage]);
+
+  useEffect(() => {
+    if (page && +page !== currentPage) {
+      const pageNum: number = +page;
+      setCurrentPage(pageNum);
+      handleSearch();
+    }
+    // eslint-disable-next-line
+  }, [page]);
 
   return (
     <Container maxW="container.xl">
@@ -122,7 +134,11 @@ export default function BrowsePage() {
         display="flex"
         justifyContent={{
           base: 'center',
-          md: isLoading ? 'center' : 'space-between',
+          md: isLoading
+            ? 'center'
+            : results.length <= 5
+            ? 'flex-start'
+            : 'space-between',
         }}
         alignItems={{
           base: 'center',
@@ -130,7 +146,6 @@ export default function BrowsePage() {
         }}
         gap={{
           base: 5,
-          md: 0,
         }}
         flexWrap="wrap"
       >
@@ -151,6 +166,14 @@ export default function BrowsePage() {
             );
           })}
       </Box>
+
+      <Pagination
+        currentPage={currentPage}
+        totalCount={numOfPages}
+        onNextPage={() => setCurrentPage(currentPage + 1)}
+        onPrevPage={() => setCurrentPage(currentPage - 1)}
+        onPageChange={(page: number) => setCurrentPage(page)}
+      />
     </Container>
   );
 }

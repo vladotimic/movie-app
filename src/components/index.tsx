@@ -8,6 +8,7 @@ import Banner from './Banner';
 import Poster from './Poster';
 import SlideButton from './SlideButton';
 import TrailerModal from './TrailerModal';
+import Pagination from './Pagination';
 
 export {
   SlideCard,
@@ -20,4 +21,5 @@ export {
   Poster,
   SlideButton,
   TrailerModal,
+  Pagination,
 };
