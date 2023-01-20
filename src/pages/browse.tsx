@@ -16,8 +16,7 @@ import { MovieCard, Pagination } from '@/components';
 
 export default function BrowsePage() {
   const router = useRouter();
-  const query = router.query.query;
-  const page = router.query.page;
+  const { page, query } = router.query;
 
   const [search, setSearch] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -28,16 +27,16 @@ export default function BrowsePage() {
   );
   const [numOfPages, setNumOfPages] = useState<number>(0);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setSearch(e.target.value);
   };
 
-  const handleBtnSearch = () => {
+  const handleBtnSearch = (): void => {
     setCurrentPage(1);
     handleSearch(search, 1);
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>): void => {
     if (e.key === 'Enter') {
       setCurrentPage(1);
       handleSearch(search, 1);
@@ -46,7 +45,7 @@ export default function BrowsePage() {
 
   const handleSearch = async (
     value: string = search,
-    pageNum = currentPage
+    pageNum: number = currentPage
   ) => {
     setIsLoading(true);
 
@@ -73,25 +72,19 @@ export default function BrowsePage() {
   };
 
   useEffect(() => {
-    if (query) {
-      const term: string = query.toString().replaceAll('%20', ' ').trim();
+    if (query && page) {
+      const term: string = decodeURI(query.toString());
+      const pageNum: number = +page;
       if (term !== search) {
         setSearch(term);
-        handleSearch(term);
       }
-    }
-    // eslint-disable-next-line
-  }, [query]);
-
-  useEffect(() => {
-    if (query && page && +page !== currentPage) {
-      const term: string = query.toString().replaceAll('%20', ' ').trim();
-      const pageNum: number = +page;
-      setCurrentPage(pageNum);
+      if (+page !== currentPage) {
+        setCurrentPage(pageNum);
+      }
       handleSearch(term, pageNum);
     }
     // eslint-disable-next-line
-  }, [page]);
+  }, [query, page]);
 
   useEffect(() => {
     if (page && +page !== currentPage) {
