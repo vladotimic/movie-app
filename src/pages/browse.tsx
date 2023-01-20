@@ -23,35 +23,45 @@ export default function BrowsePage() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [results, setResults] = useState<IMovieCard[]>([]);
   const [totalResults, setTotalResults] = useState<number>(0);
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [currentPage, setCurrentPage] = useState<number>(
+    page !== undefined ? +page : 1
+  );
   const [numOfPages, setNumOfPages] = useState<number>(0);
-
-  console.log(currentPage);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   };
 
+  const handleBtnSearch = () => {
+    setCurrentPage(1);
+    handleSearch(search, 1);
+  };
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      handleSearch();
+      setCurrentPage(1);
+      handleSearch(search, 1);
     }
   };
 
-  const handleSearch = async (value: string = search) => {
+  const handleSearch = async (
+    value: string = search,
+    pageNum = currentPage
+  ) => {
     setIsLoading(true);
+
     try {
-      const result = await searchMovies(value, currentPage);
+      const result = await searchMovies(value, pageNum);
       if (result) {
-        console.log(result);
         setResults(result.data);
         setTotalResults(result.total_results);
+        setCurrentPage(result.page);
         setNumOfPages(result.total_pages);
         router.push({
           pathname: `/browse`,
           query: {
             query: encodeURI(value),
-            page: currentPage,
+            page: pageNum,
           },
         });
       }
@@ -63,22 +73,32 @@ export default function BrowsePage() {
   };
 
   useEffect(() => {
-    if (query && query !== search) {
+    if (query) {
       const term: string = query.toString().replaceAll('%20', ' ').trim();
-      setSearch(term);
-      handleSearch(term);
+      if (term !== search) {
+        setSearch(term);
+        handleSearch(term);
+      }
     }
     // eslint-disable-next-line
-  }, [query, page, currentPage]);
+  }, [query]);
 
   useEffect(() => {
-    if (page && +page !== currentPage) {
+    if (query && page && +page !== currentPage) {
+      const term: string = query.toString().replaceAll('%20', ' ').trim();
       const pageNum: number = +page;
       setCurrentPage(pageNum);
-      handleSearch();
+      handleSearch(term, pageNum);
     }
     // eslint-disable-next-line
   }, [page]);
+
+  useEffect(() => {
+    if (page && +page !== currentPage) {
+      handleSearch();
+    }
+    // eslint-disable-next-line
+  }, [currentPage]);
 
   return (
     <Container maxW="container.xl">
@@ -115,7 +135,7 @@ export default function BrowsePage() {
             />
           </FormControl>
           <Button
-            onClick={() => handleSearch()}
+            onClick={handleBtnSearch}
             borderRadius="none"
             borderTopRightRadius="0.3rem"
             borderBottomRightRadius="0.3rem"
@@ -167,13 +187,15 @@ export default function BrowsePage() {
           })}
       </Box>
 
-      <Pagination
-        currentPage={currentPage}
-        totalCount={numOfPages}
-        onNextPage={() => setCurrentPage(currentPage + 1)}
-        onPrevPage={() => setCurrentPage(currentPage - 1)}
-        onPageChange={(page: number) => setCurrentPage(page)}
-      />
+      {results.length > 0 && numOfPages > 0 && (
+        <Pagination
+          currentPage={currentPage}
+          totalCount={numOfPages}
+          onNextPage={() => setCurrentPage(currentPage + 1)}
+          onPrevPage={() => setCurrentPage(currentPage - 1)}
+          onPageChange={(page: number) => setCurrentPage(page)}
+        />
+      )}
     </Container>
   );
 }
