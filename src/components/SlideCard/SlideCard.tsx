@@ -38,7 +38,7 @@ const SlideCard = (props: Props) => {
   return (
     <Box
       as={motion.div}
-      maxW="sm"
+      maxW={{ md: 'sm' }}
       color="white"
       bg="blue.900"
       position="relative"

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Box, Text } from '@chakra-ui/react';
+import { Box, Text, useMediaQuery } from '@chakra-ui/react';
 import { A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -15,6 +15,11 @@ interface Props {
 const MovieSection = (props: Props) => {
   const { title, movies } = props;
 
+  const [isMobile] = useMediaQuery('(max-width: 37rem)');
+  const [isTablet] = useMediaQuery('(max-width: 48rem)');
+  const [isLaptop] = useMediaQuery('(max-width: 62rem)');
+  const [isDesktop] = useMediaQuery('(max-width: 80rem)');
+
   return (
     <Box my="1rem">
       <Text
@@ -27,7 +32,9 @@ const MovieSection = (props: Props) => {
       {movies && (
         <Swiper
           modules={[A11y]}
-          slidesPerView={5}
+          slidesPerView={
+            isMobile ? 1 : isTablet ? 2 : isLaptop ? 3 : isDesktop ? 4 : 5
+          }
         >
           <SlideButton type="next" />
           <SlideButton type="prev" />

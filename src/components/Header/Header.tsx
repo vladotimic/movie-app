@@ -21,10 +21,10 @@ const Header = (props: Props) => {
           maxW="container.xl"
           mt="6rem"
         >
-          <Box w="45rem">
-            <Text fontSize="5xl">{title}</Text>
+          <Box>
+            <Text fontSize={{ base: '3xl', md: '5xl' }}>{title}</Text>
             <Text
-              fontSize="xl"
+              fontSize={{ base: 'lg', md: 'xl' }}
               py="1rem"
             >
               {overview}
