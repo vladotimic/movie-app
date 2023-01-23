@@ -1,5 +1,4 @@
-import { getDirector } from '@/utils/movie';
-import { filterCredits } from '@/utils/movie';
+import { filterCast, filterCrew, getDirector } from '@/utils/movie';
 import { api } from '@/api';
 import { popular, singleMovie } from '@/data';
 import {
@@ -141,8 +140,8 @@ export const getMovieCredits = async (id: Id) => {
       data: { cast, crew },
     } = await api.get(`/movie/${id}/credits?api_key=${apiKey}`);
     return {
-      cast: filterCredits(cast),
-      crew: filterCredits(crew),
+      cast: filterCast(cast),
+      crew: filterCrew(crew),
       director: getDirector(crew),
     };
   } catch (error) {

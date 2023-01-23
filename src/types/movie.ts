@@ -33,15 +33,20 @@ export interface IMovieDetails extends IBase, IMovieBase, IMovieBanner {
   poster_path: string;
   genres: IMovieGenre[];
   homepage: string;
-  cast: IMovieCredits[];
-  crew: IMovieCredits[];
+  cast: IMovieCast[];
+  crew: IMovieCrew[];
   director: string;
   trailer: IMovieTrailer[];
 }
 
-export interface IMovieCredits extends IBase, IMovieGenre {
+export interface IMovieCast extends IBase, IMovieGenre {
   profile_path: string;
   known_for_department: string;
+}
+
+export interface IMovieCrew extends IBase, IMovieGenre {
+  profile_path: string;
+  department: string;
 }
 
 export interface IMovieCard extends IBase {
