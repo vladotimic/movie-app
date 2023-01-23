@@ -139,11 +139,6 @@ export const getMovieCredits = async (id: Id) => {
     const {
       data: { cast, crew },
     } = await api.get(`/movie/${id}/credits?api_key=${apiKey}`);
-    console.log({
-      cast: filterCast(cast),
-      crew: filterCrew(crew),
-      director: getDirector(crew),
-    });
     return {
       cast: filterCast(cast),
       crew: filterCrew(crew),
