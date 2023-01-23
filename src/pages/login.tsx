@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import {
   Box,
   Text,
@@ -10,6 +12,7 @@ import {
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { Magic } from 'magic-sdk';
 import { formatMessage } from '@/utils/string';
 
 interface IInputs {
@@ -23,6 +26,10 @@ const schema = yup
   .required();
 
 export default function LoginPage() {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -30,7 +37,42 @@ export default function LoginPage() {
   } = useForm<IInputs>({
     resolver: yupResolver(schema),
   });
-  const onSubmit: SubmitHandler<IInputs> = (data) => console.log(data);
+
+  const onSubmit: SubmitHandler<IInputs> = async ({ email }: IInputs) => {
+    setIsLoading(true);
+
+    if (email) {
+      try {
+        const magic = new Magic(process.env.NEXT_PUBLIC_MAGIC_API_KEY || '');
+        const didToken = await magic.auth.loginWithMagicLink({
+          email,
+        });
+        console.log({ didToken });
+        if (didToken) {
+          router.push('/');
+        }
+      } catch (error) {
+        console.error(error);
+        console.log('There was an error with Magic link auth.');
+      } finally {
+        setIsLoading(false);
+      }
+    }
+  };
+
+  useEffect(() => {
+    const handleComplete = () => {
+      setIsLoading(false);
+    };
+
+    router.events.on('routeChangeComplete', handleComplete);
+    router.events.on('routeChangeError', handleComplete);
+
+    return () => {
+      router.events.off('routeChangeComplete', handleComplete);
+      router.events.off('routeChangeError', handleComplete);
+    };
+  }, [router]);
 
   return (
     <Box
@@ -74,7 +116,7 @@ export default function LoginPage() {
               </FormErrorMessage>
             )}
           </FormControl>
-          <Button type="submit">Sign In</Button>
+          <Button type="submit">{isLoading ? 'Loading...' : 'Sign In'}</Button>
         </form>
       </Box>
       <Box
