@@ -1,19 +1,24 @@
 import Link from 'next/link';
-import { Box, Text } from '@chakra-ui/react';
+import { Box, Text, useMediaQuery } from '@chakra-ui/react';
 import { A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/a11y';
-import { MovieBase } from '@/types/movie';
-import { Card, SlideButton } from '@/components';
+import { IMovieBase } from '@/types/movie';
+import { SlideCard, SlideButton } from '@/components';
 
 interface Props {
   title: string;
-  movies: MovieBase[];
+  movies: IMovieBase[];
 }
 
 const MovieSection = (props: Props) => {
   const { title, movies } = props;
+
+  const [isMobile] = useMediaQuery('(max-width: 37rem)');
+  const [isTablet] = useMediaQuery('(max-width: 48rem)');
+  const [isLaptop] = useMediaQuery('(max-width: 62rem)');
+  const [isDesktop] = useMediaQuery('(max-width: 80rem)');
 
   return (
     <Box my="1rem">
@@ -27,11 +32,13 @@ const MovieSection = (props: Props) => {
       {movies && (
         <Swiper
           modules={[A11y]}
-          slidesPerView={5}
+          slidesPerView={
+            isMobile ? 1 : isTablet ? 2 : isLaptop ? 3 : isDesktop ? 4 : 5
+          }
         >
           <SlideButton type="next" />
           <SlideButton type="prev" />
-          {movies.map((movie: MovieBase, index: number) => {
+          {movies.map((movie: IMovieBase, index: number) => {
             const { id } = movie;
             const position =
               index === 0
@@ -42,7 +49,7 @@ const MovieSection = (props: Props) => {
             return (
               <SwiperSlide key={id}>
                 <Link href={`/movie/${id}`}>
-                  <Card
+                  <SlideCard
                     movie={movie}
                     position={position}
                   />

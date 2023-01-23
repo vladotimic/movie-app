@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import { GetServerSideProps } from 'next';
-import { MovieBase, MovieBanner } from '@/types/movie';
+import { IMovieBase, IMovieBanner } from '@/types/movie';
 import { MovieSection, Header } from '@/components';
 import { getAllPopularMovies } from '@/lib/movies';
 
 interface Movie {
   title: string;
-  movies: MovieBase[];
+  movies: IMovieBase[];
 }
 
 interface Props {
-  popular: MovieBanner[];
+  popular: IMovieBanner[];
   movies: Movie[];
 }
 

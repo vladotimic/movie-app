@@ -10,6 +10,13 @@ const Button: ComponentStyleConfig = {
         bg: 'red.700',
       },
     },
+    outline: {
+      _hover: {
+        bg: 'red.500',
+        color: 'white',
+        borderColor: 'red.500',
+      },
+    },
   },
   defaultProps: {
     colorScheme: 'red',

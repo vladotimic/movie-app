@@ -1,47 +1,52 @@
-export interface Base {
+export interface IBase {
   id: number;
 }
 
-export interface MovieBase extends Base {
+export interface IMovieBase extends IBase {
   title: string;
   release_date: string;
   backdrop_path: string;
 }
 
-export interface MovieBanner extends Base, MovieBase {
+export interface IMovieBanner extends IBase, IMovieBase {
   overview: string;
 }
 
-export interface MovieGenre extends Base {
+export interface IMovieGenre extends IBase {
   name: string;
 }
 
-export interface MovieTrailer {
+export interface IMovieTrailer {
   key: string;
   type: string;
 }
 
-export interface MovieDetails extends Base, MovieBase, MovieBanner {
+export interface IMovieDetails extends IBase, IMovieBase, IMovieBanner {
   imdb_id: string;
   original_title: string;
-  spoken_languages: MovieGenre[];
+  spoken_languages: IMovieGenre[];
   tagline: string;
   budget: number;
   revenue: number;
   runtime: number;
   status: string;
   poster_path: string;
-  genres: MovieGenre[];
+  genres: IMovieGenre[];
   homepage: string;
-  cast: MovieCredits[];
-  crew: MovieCredits[];
+  cast: IMovieCredits[];
+  crew: IMovieCredits[];
   director: string;
-  trailer: MovieTrailer[];
+  trailer: IMovieTrailer[];
 }
 
-export interface MovieCredits extends Base, MovieGenre {
+export interface IMovieCredits extends IBase, IMovieGenre {
   profile_path: string;
   known_for_department: string;
+}
+
+export interface IMovieCard extends IBase {
+  title: string;
+  poster_path: string;
 }
 
 export type Genre =

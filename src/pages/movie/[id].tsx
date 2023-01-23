@@ -11,14 +11,15 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import { FaPlay } from 'react-icons/fa';
-import { MovieBanner, MovieDetails } from '@/types/movie';
+import { IoChevronBack } from 'react-icons/io5';
+import { IMovieBanner, IMovieDetails } from '@/types/movie';
 import { getPopularMovies, getMovieDetails } from '@/lib/movies';
 import { getYear, formatDate } from '@/utils/date';
 import { Banner, CastSection, Poster, TrailerModal } from '@/components';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const data = await getPopularMovies();
-  const paths = data.map((item: MovieBanner) => {
+  const paths = data.map((item: IMovieBanner) => {
     return {
       params: {
         id: item.id.toString(),
@@ -67,7 +68,7 @@ const TextDesc = ({
   );
 };
 
-export default function MoviePage(props: MovieDetails) {
+export default function MoviePage(props: IMovieDetails) {
   const {
     title,
     release_date,
@@ -86,6 +87,10 @@ export default function MoviePage(props: MovieDetails) {
   const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  const goBack = () => {
+    router.back();
+  };
+
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
@@ -96,9 +101,18 @@ export default function MoviePage(props: MovieDetails) {
         <title>{title}</title>
       </Head>
       <Banner imgUrl={backdrop_path}>
+        <Button
+          leftIcon={<IoChevronBack />}
+          variant="link"
+          color="white"
+          onClick={goBack}
+        >
+          Go Back
+        </Button>
         <Flex
           flexDirection={{ base: 'column', md: 'row' }}
           gap={5}
+          my="1rem"
         >
           <Box
             w="100%"

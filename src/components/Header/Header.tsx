@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { Box, Text, Button } from '@chakra-ui/react';
-import { MovieBanner as Props } from '@/types/movie';
+import { Box, Container, Text, Button } from '@chakra-ui/react';
+import { IMovieBanner as Props } from '@/types/movie';
 
 const Header = (props: Props) => {
   const { id, title, overview, backdrop_path } = props;
@@ -17,25 +17,26 @@ const Header = (props: Props) => {
         h="100%"
         zIndex="1"
       >
-        <Box
+        <Container
+          maxW="container.xl"
           mt="6rem"
-          px="4rem"
-          w="45rem"
         >
-          <Text fontSize="5xl">{title}</Text>
-          <Text
-            fontSize="xl"
-            py="1rem"
-          >
-            {overview}
-          </Text>
-          <Link
-            href={`/movie/${id}`}
-            legacyBehavior
-          >
-            <Button mt="1rem">Play</Button>
-          </Link>
-        </Box>
+          <Box>
+            <Text fontSize={{ base: '3xl', md: '5xl' }}>{title}</Text>
+            <Text
+              fontSize={{ base: 'lg', md: 'xl' }}
+              py="1rem"
+            >
+              {overview}
+            </Text>
+            <Link
+              href={`/movie/${id}`}
+              legacyBehavior
+            >
+              <Button mt="1rem">Play</Button>
+            </Link>
+          </Box>
+        </Container>
       </Box>
       <Box
         position="absolute"
