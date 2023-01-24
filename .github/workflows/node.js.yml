@@ -7,11 +7,6 @@ on:
   push:
     branches: ['main']
 
-env: 
-  NEXT_PUBLIC_TMDB_API_KEY=bad321154255d7c4b567fcd9589d4dee
-  NEXT_PUBLIC_MAGIC_API_KEY=pk_live_17A286CF8DE7FDD1
-  NEXT_PUBLIC_NODE_ENV=production
-
 jobs:
   build:
     runs-on: ubuntu-latest
