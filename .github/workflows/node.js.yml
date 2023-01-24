@@ -11,9 +11,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    env: 
-      NEXT_PUBLIC_TMDB_API_KEY=${{ env.NEXT_PUBLIC_TMDB_API_KEY }}
-      NEXT_PUBLIC_NODE_ENV=${{ env.NEXT_PUBLIC_NODE_ENV }}
+    env:
+      NEXT_PUBLIC_TMDB_API_KEY: ${{ env.NEXT_PUBLIC_TMDB_API_KEY }}
+      NEXT_PUBLIC_NODE_ENV: ${{ env.NEXT_PUBLIC_NODE_ENV }}
 
     steps:
       - uses: actions/checkout@v3
