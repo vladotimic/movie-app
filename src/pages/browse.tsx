@@ -83,6 +83,18 @@ export default function BrowsePage() {
       }
       handleSearch(term, pageNum);
     }
+    if (query) {
+      const term: string = decodeURI(query.toString());
+      if (term !== search) {
+        setSearch(term);
+      }
+      handleSearch(term, 1);
+    }
+    if (!query) {
+      setSearch('');
+      setCurrentPage(1);
+      router.replace('/browse');
+    }
     // eslint-disable-next-line
   }, [query, page]);
 
@@ -115,6 +127,8 @@ export default function BrowsePage() {
               value={search}
               onChange={handleChange}
               onKeyDown={handleKeyDown}
+              bg="white"
+              color="black"
               borderColor="red"
               borderRadius="none"
               borderTopLeftRadius="0.3rem"
