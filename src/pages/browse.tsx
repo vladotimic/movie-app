@@ -17,6 +17,7 @@ import { MovieCard, Pagination } from '@/components';
 export default function BrowsePage() {
   const router = useRouter();
   const { page, query } = router.query;
+  console.log({ page, query });
 
   const [search, setSearch] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -72,28 +73,30 @@ export default function BrowsePage() {
   };
 
   useEffect(() => {
-    if (query && page) {
-      const term: string = decodeURI(query.toString());
-      const pageNum: number = +page;
-      if (term !== search) {
-        setSearch(term);
+    if (router.isReady) {
+      if (query && page) {
+        const term: string = decodeURI(query.toString());
+        const pageNum: number = +page;
+        if (term !== search) {
+          setSearch(term);
+        }
+        if (+page !== currentPage) {
+          setCurrentPage(pageNum);
+        }
+        handleSearch(term, pageNum);
       }
-      if (+page !== currentPage) {
-        setCurrentPage(pageNum);
+      if (query && !page) {
+        const term: string = decodeURI(query.toString());
+        if (term !== search) {
+          setSearch(term);
+        }
+        handleSearch(term, 1);
       }
-      handleSearch(term, pageNum);
-    }
-    if (query) {
-      const term: string = decodeURI(query.toString());
-      if (term !== search) {
-        setSearch(term);
+      if (!query) {
+        setSearch('');
+        setCurrentPage(1);
+        router.replace('/browse');
       }
-      handleSearch(term, 1);
-    }
-    if (!query) {
-      setSearch('');
-      setCurrentPage(1);
-      router.replace('/browse');
     }
     // eslint-disable-next-line
   }, [query, page]);
